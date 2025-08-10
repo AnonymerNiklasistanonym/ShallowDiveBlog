@@ -1,0 +1,57 @@
+name: Deploy Hugo site to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]   # Build & deploy on push to main
+  workflow_dispatch:     # Allow manual runs from the Actions tab
+
+permissions:
+  contents: read         # Required for checkout
+  pages: write           # Required for deployment
+  id-token: write        # Required for OIDC authentication
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true          # Required for SCSS processing in Hugo Blog Awesome
+      - name: Install Go (for Hugo Modules)
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - name: Build site
+        run: hugo --minify --cleanDestinationDir
+      - name: Run Pagefind indexer
+        run: |
+          mv public/tags/ tags/
+          npx -y pagefind --site public
+          mv tags/ public/tags/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

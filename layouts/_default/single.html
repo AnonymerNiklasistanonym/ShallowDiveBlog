@@ -1,0 +1,76 @@
+{{ define "main" }}
+<!-- Based on: https://github.com/hugo-sid/hugo-blog-awesome/blob/main/layouts/_default/single.html -->
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <!-- Header with metadata -->
+            <header class="header">
+                <h1 class="header-title">{{ .Title }}</h1>
+
+                {{ if not .Params.hide_meta }}
+
+                {{ $configDateFormat := .Site.Params.dateFormat | default ":date_medium" }}
+
+                {{ with .Date }}
+                {{ $ISO_time := dateFormat "2006-01-02T15:04:05-07:00" . }}
+                <div class="post-meta">
+                    <time datetime="{{ $ISO_time }}" itemprop="datePublished">
+                    {{ . | time.Format $configDateFormat }}
+                    </time>
+
+                    {{ $lastmod := $.Lastmod }}
+                    {{ if and $lastmod (ne $.Date $lastmod) }}
+                    {{ $ISO_lastmod := dateFormat "2006-01-02T15:04:05-07:00" $lastmod }}
+                    <small> ({{ i18n "lastupdated" }}:
+                        <time datetime="{{ $ISO_lastmod }}" itemprop="dateModified" style="margin-right: 0;">
+                        {{ $lastmod | time.Format $configDateFormat }}
+                        </time>)
+                    </small>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                {{ if .Params.author }}
+                <div class="post-meta">
+                    <small>{{ i18n "by" }}: {{ .Params.author }}</small>
+                </div>
+                {{ else if .Site.Params.author.name }}
+                <div class="post-meta">
+                    <small>{{ i18n "by" }}: {{ .Site.Params.author.name }}</small>
+                </div>
+                {{ end }}
+
+                {{ with .Params.categories }}
+                    <div class="post-meta">
+                        <strong>{{ i18n "category" 2 }}:</strong>
+                        {{ range $index, $cat := . }}
+                            {{ if $index }}, {{ end }}
+                            <a href="{{ "categories/" | relURL }}{{ $cat | urlize }}">{{ $cat }}</a>
+                        {{ end }}
+                    </div>
+                {{ end }}
+
+                {{ with .Params.tags }}
+                    <div class="post-meta">
+                        <strong>{{ i18n "tag" 2 }}:</strong>
+                        {{ range $index, $tag := . }}
+                            {{ if $index }}, {{ end }}
+                            <a href="{{ "tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+                        {{ end }}
+                    </div>
+                {{ end }}
+
+                {{ end }}
+            </header>
+
+            {{ partial "toc.html" . }}
+
+            <div class="page-content">
+                {{ .Content }}
+            </div>
+        </article>
+
+        {{- partial "comments.html" . -}}
+    </main>
+</div>
+{{ end }}
