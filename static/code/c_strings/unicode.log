@@ -1,0 +1,2 @@
+ASCII_CONSTANT: Hello! (length = 6, utf-8 length = 6)
+UTF8_CONSTANT: ÄÖÜ€  (length = 9, utf-8 length = 4)

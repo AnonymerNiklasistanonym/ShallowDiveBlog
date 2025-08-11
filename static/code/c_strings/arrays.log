@@ -1,0 +1,10 @@
+staticArr (5): 1,20,30,40,50
+0: 1, 2: 30
+staticArrAuto (4): 10,20,30,40
+staticArrZeros (5): 1,2,0,0,0
+[staticArrPtr] 0: 1, 2: 30
+staticArrPtr                 = 0x7ffe99b94580 [pointer]
+staticArrPtr + 1             = 0x7ffe99b94584 [pointer]
+staticArrPtr + 1             = 0x7ffe99b94581 [size_t]
+staticArrPtr + 1*sizeof(int) = 0x7ffe99b94584 [size_t]
+(long *) staticArrPtr + 1    = 0x7ffe99b94588 [long pointer]
