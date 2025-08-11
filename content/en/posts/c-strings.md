@@ -16,6 +16,18 @@ categories:
   - informatics
 ---
 
+## TODOs
+
+- [ ] Heap/Stack allocation
+  - [ ] Difference `char*`/`char[]`
+- [ ] String Literals
+  - [ ] Immutable, Read-only memory, ELF binary
+  - [ ] Performance gains?
+  - [ ] ANSI standard
+  - [ ] Immutable objects in other languages like JAVA / interned strings
+- [ ] Update code parts
+- [ ] Good practices
+
 ## Basics
 
 The C programming language has a set of functions implementing operations on strings (character/byte strings) in its standard library:
