@@ -61,15 +61,20 @@ theme = "github.com/hugo-sid/hugo-blog-awesome"
     url = '/search/'
     weight = 20
   [[Languages.en-us.menu.main]]
+    pageRef="categories"
+    name = 'Categories'
+    url = '/categories/'
+    weight = 30
+  [[Languages.en-us.menu.main]]
     pageRef="tags"
     name = 'Tags'
     url = '/tags/'
-    weight = 30
+    weight = 40
   [[Languages.en-us.menu.main]]
     pageRef="about"
     name = 'About'
     url = '/about/'
-    weight = 40
+    weight = 50
 
 [Languages.en-us.params.author]
   description = "Shallow dives into topics I'm interested in."
@@ -90,18 +95,23 @@ theme = "github.com/hugo-sid/hugo-blog-awesome"
   [[Languages.de-de.menu.main]]
     pageRef="search"
     name = 'Suche'
-    url = '/search/'
+    url = '/suche/'
     weight = 20
+  [[Languages.de-de.menu.main]]
+    pageRef="categories"
+    name = 'Kategorien'
+    url = '/kategorien/'
+    weight = 30
   [[Languages.de-de.menu.main]]
     pageRef="tags"
     name = 'Tags'
     url = '/tags/'
-    weight = 30
+    weight = 40
   [[Languages.de-de.menu.main]]
     pageRef="about"
     name = 'Über'
-    url = '/about/'
-    weight = 40
+    url = '/ueber/'
+    weight = 50
 
 [Languages.de-de.params.author]
   description = "Oberflächliche Exkurse in Themen, die mich interessieren."
@@ -114,4 +124,4 @@ url = "https://github.com/AnonymerNiklasistanonym"
 
 [[params.socialIcons]]
 name = "Rss"
-url = "./index.xml"
+url = "/ShallowDiveBlog/index.xml"
