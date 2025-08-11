@@ -1,0 +1,63 @@
+digraph tcp_sequence {
+    rankdir=LR;
+    splines=true;
+    nodesep=2;
+    ranksep=1.5;
+
+    // Participants (at the top)
+    Client [shape=plaintext, label="Client"];
+    Server [shape=plaintext, label="Server"];
+
+    // Lifeline nodes (invisible, for vertical positioning)
+    c1 [shape=point, width=0];
+    c2 [shape=point, width=0];
+    c3 [shape=point, width=0];
+    c4 [shape=point, width=0];
+    c5 [shape=point, width=0];
+
+    s1 [shape=point, width=0];
+    s2 [shape=point, width=0];
+    s3 [shape=point, width=0];
+    s4 [shape=point, width=0];
+
+    // Align participants top
+    {rank=same; Client; Server;}
+
+    // Align lifeline points vertically per participant
+    {rank=same; Client; c1;}
+    {rank=same; Client; c2;}
+    {rank=same; Client; c3;}
+    {rank=same; Client; c4;}
+    {rank=same; Client; c5;}
+
+    {rank=same; Server; s1;}
+    {rank=same; Server; s2;}
+    {rank=same; Server; s3;}
+    {rank=same; Server; s4;}
+
+    // Vertical ordering of lifeline points (simulate time flow top to bottom)
+    c1 -> c2 -> c3 -> c4 -> c5 [style=invis];
+    s1 -> s2 -> s3 -> s4 [style=invis];
+
+    // Draw vertical lifelines as edges without arrowheads
+    Client -> c1 [arrowhead=none, penwidth=2, color=gray];
+    c1 -> c2 [arrowhead=none, penwidth=2, color=gray];
+    c2 -> c3 [arrowhead=none, penwidth=2, color=gray];
+    c3 -> c4 [arrowhead=none, penwidth=2, color=gray];
+    c4 -> c5 [arrowhead=none, penwidth=2, color=gray];
+
+    Server -> s1 [arrowhead=none, penwidth=2, color=gray];
+    s1 -> s2 [arrowhead=none, penwidth=2, color=gray];
+    s2 -> s3 [arrowhead=none, penwidth=2, color=gray];
+    s3 -> s4 [arrowhead=none, penwidth=2, color=gray];
+
+    // Message arrows diagonally downward with labels
+    c1 -> s1 [label="SYN\nSeq=0 Win=65495\nLen=0 MSS=65495\nSACK_PERM TSval=3192259273 WS=128", fontsize=8, color=black];
+    s1 -> c2 [label="SYN, ACK\nSeq=0 Ack=1\nWin=65483 MSS=65495\nSACK_PERM TSval=3192259273 WS=128", fontsize=8, color=black];
+    c2 -> s2 [label="ACK\nSeq=1 Ack=1\nWin=65536", fontsize=8, color=black];
+    c3 -> s2 [label="PSH, ACK\nSeq=1 Ack=1\nLen=14 (Data payload)", fontsize=8, color=black];
+    s2 -> c4 [label="ACK\nSeq=1 Ack=15\nWin=65536", fontsize=8, color=black];
+    s3 -> c4 [label="FIN, ACK\nSeq=1 Ack=15\nWin=65536", fontsize=8, color=black];
+    c4 -> s4 [label="ACK\nSeq=15 Ack=2\nWin=65536", fontsize=8, color=black];
+    c5 -> s4 [label="FIN, ACK\nSeq=15 Ack=2\nWin=65536", fontsize=8, color=black];
+}
