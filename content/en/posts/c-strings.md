@@ -12,8 +12,8 @@ tags:
   - ASCII
   - Unicode
 categories:
-  - software
-  - informatics
+  - Software
+  - Informatics
 ---
 
 ## TODOs

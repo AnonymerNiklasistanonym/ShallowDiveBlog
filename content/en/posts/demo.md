@@ -6,9 +6,9 @@ date: 2025-08-10
 lastmod: 2025-08-12
 slug: demo-custom-slug
 tags:
-  - tutorial
+  - Demo
 categories:
-  - demo
+  - Demo
 draft: false
 ---
 

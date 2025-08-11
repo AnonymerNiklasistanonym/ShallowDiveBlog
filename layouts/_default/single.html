@@ -37,7 +37,7 @@
                 {{ with .Params.categories }}
                     <div class="post-meta">
                         <strong>{{ i18n "category" 2 }}:</strong>
-                        {{ range $index, $cat := . }}
+                        {{ range $index, $cat := sort . }}
                             {{ if $index }}, {{ end }}
                             <a href="{{ "categories/" | relURL }}{{ $cat | urlize }}">{{ $cat }}</a>
                         {{ end }}
@@ -47,7 +47,7 @@
                 {{ with .Params.tags }}
                     <div class="post-meta">
                         <strong>{{ i18n "tag" 2 }}:</strong>
-                        {{ range $index, $tag := . }}
+                        {{ range $index, $tag := sort . }}
                             {{ if $index }}, {{ end }}
                             <a href="{{ "tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
                         {{ end }}

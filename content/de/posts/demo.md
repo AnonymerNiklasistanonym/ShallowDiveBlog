@@ -3,9 +3,9 @@ title: Demo Post [de]
 summary: Demo Beschreibung
 date: 2025-08-10
 tags:
-  - tutorial
+  - Demo
 categories:
-  - demo
+  - Demo
 draft: false
 ---
 
