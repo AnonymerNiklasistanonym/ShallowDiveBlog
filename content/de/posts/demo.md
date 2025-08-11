@@ -1,8 +1,12 @@
 ---
-title: "Demo Post [de]"
+title: Demo Post [de]
+rssFeedDescription: Demo Beschreibung
 date: 2025-08-10
+tags:
+  - tutorial
+categories:
+  - demo
 draft: false
-tags: ["demo"]
 ---
 
 Dies ist ein Demo Post um das Hugo Blog Awesome Theme zu testen.

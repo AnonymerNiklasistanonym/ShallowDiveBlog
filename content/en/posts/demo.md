@@ -1,16 +1,14 @@
 ---
-title: "Demo Post [en-us]"
-author: "Custom Author"
+title: Demo Post [en-us]
+rssFeedDescription: Demo description
+author: Custom Author
 date: 2025-08-10
 lastmod: 2025-08-12
-slug: "demo-custom-slug"
-summary: "Demo summary."
-description: "Demo description"
+slug: demo-custom-slug
 tags:
-  - "tutorial"
-  - "metadata"
+  - tutorial
 categories:
-  - "blog"
+  - demo
 draft: false
 ---
 
