@@ -132,14 +132,16 @@ With the following addition multiple languages are supported:
 
 ## Add posts
 
+Using the following command automatically creates an empty draft following the specification in [`assets/default.md`](assets/default.md):
+
 ```sh
-# Only the first time
-mkdir -p content/en
-mkdir -p content/en/posts
 # Create new article file (in 'content/en/posts')
-hugo new en/posts/my-new-post.md
-# Create bew content file (in 'content/en')
-hugo new en/about.md
+hugo new posts/new-post.md
+# Create new content file (in 'content/en')
+hugo new about.md
+# Other languages
+hugo new ../de/posts/new-post.md
+hugo new ../de/about.md
 ```
 
 Make sure that if the post is finished to change the metadata to `draft: false` for it to be listed on deployment:
@@ -162,6 +164,7 @@ Test
 - `lastmod`: The date of the last update
 - `draft`: `false`/`true` (set `true` if it should be published)
 - `math`: `false`/`true` (set `true` if it should automatically render math sections like $1+1=2$)
+- `toc`: `false`/`true` (set `false` if table of contents for a post should be hidden)
 - `summary`: The content that should be displayed in the RSS feed
 - `slug`: A custom URL slug for the page
 - `tags`: A list of tags which are indexed across all pages

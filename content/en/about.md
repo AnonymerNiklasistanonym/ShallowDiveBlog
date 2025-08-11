@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: About
 toc: false
 draft: false
 hide_meta: true

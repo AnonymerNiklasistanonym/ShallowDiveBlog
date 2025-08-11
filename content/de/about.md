@@ -1,5 +1,5 @@
 ---
-title: "Über"
+title: Über
 toc: false
 draft: false
 hide_meta: true
