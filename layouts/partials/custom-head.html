@@ -1,2 +1,5 @@
+<!-- custom-head is officially supported, see https://github.com/hugo-sid/hugo-blog-awesome/blob/v1.20.0/layouts/partials/head.html -->
+
+<!-- add an additional stylesheet from the assets folder into the site, also minify it like the other files if requested -->
 {{- $custom_css := resources.Get "css/custom.css" | minify | fingerprint }}
 <link href="{{ $custom_css.RelPermalink }}" rel="stylesheet">

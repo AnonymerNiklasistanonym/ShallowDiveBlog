@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# run_c.sh - Compile and run a C file and save output to log file
 
 set -e
 

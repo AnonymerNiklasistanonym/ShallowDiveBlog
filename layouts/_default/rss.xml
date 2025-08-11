@@ -28,7 +28,7 @@
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end -}}
     {{ range $pages }}
-    <!-- IF check to exclude pages with 'rss: false' otherwise everything from: https://github.com/hugo-sid/hugo-blog-awesome/blob/841dff0d9c7566ea9176d4a16f03fb18f0db2219/layouts/_default/rss.xml -->
+    <!-- PATCH: Exclude page from RSS feed if page has the YAML information 'rss: false' -->
     {{ if ne .Params.rss false }}
     <item>
       <title>{{ .Title }}</title>

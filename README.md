@@ -166,5 +166,9 @@ Test
 - `slug`: A custom URL slug for the page
 - `tags`: A list of tags which are indexed across all pages
 - `categories`: A list of categories which are indexed across all pages
-- `hide_meta`: `false`/`true` (set `true` if it should hide the page metadata like date and author, **CUSTOM TAG**)
 - `disable_search_index`: `false`/`true` (set `true` if it should not be indexed using `pagefind`)
+
+### Custom YAML options
+
+- `hide_meta`: `false`/`true` (set `true` if it should hide the page metadata like date and author)
+- `rss`: `false`/`true` (set `false` if it should be hidden from the CSS feed like the about page)

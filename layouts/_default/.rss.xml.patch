@@ -1,0 +1,18 @@
+--- rss.xml.original	2023-09-16 11:31:20.000000000 +0200
++++ rss.xml	2025-08-11 23:26:59.176259656 +0200
+@@ -28,6 +28,8 @@
+     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+     {{- end -}}
+     {{ range $pages }}
++    <!-- PATCH: Exclude page from RSS feed if page has the YAML information 'rss: false' -->
++    {{ if ne .Params.rss false }}
+     <item>
+       <title>{{ .Title }}</title>
+       <link>{{ .Permalink }}</link>
+@@ -42,5 +44,6 @@
+       {{ end }}
+     </item>
+     {{ end }}
++    {{ end }}
+   </channel>
+ </rss>
