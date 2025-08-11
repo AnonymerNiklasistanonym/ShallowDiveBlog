@@ -1,6 +1,6 @@
 ---
 title: Demo Post [de]
-rssFeedDescription: Demo Beschreibung
+summary: Demo Beschreibung
 date: 2025-08-10
 tags:
   - tutorial

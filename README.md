@@ -162,7 +162,7 @@ Test
 - `lastmod`: The date of the last update
 - `draft`: `false`/`true` (set `true` if it should be published)
 - `math`: `false`/`true` (set `true` if it should automatically render math sections like $1+1=2$)
-- `rssFeedDescription`: The content that should be displayed in the RSS feed
+- `summary`: The content that should be displayed in the RSS feed
 - `slug`: A custom URL slug for the page
 - `tags`: A list of tags which are indexed across all pages
 - `categories`: A list of categories which are indexed across all pages

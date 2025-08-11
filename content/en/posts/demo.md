@@ -1,6 +1,6 @@
 ---
 title: Demo Post [en-us]
-rssFeedDescription: Demo description
+summary: Demo description
 author: Custom Author
 date: 2025-08-10
 lastmod: 2025-08-12

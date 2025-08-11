@@ -1,10 +1,13 @@
 ---
 title: Boot
-rssFeedDescription: A shallow dive into how PCs boot with a focus of Linux kernels
+summary: A shallow dive into how PCs boot with a focus of Linux kernels
 date: 2025-08-10T16:37:19+02:00
 draft: true
 tags:
   - "draft"
+categories:
+  - software
+  - informatics
 ---
 
 TODO

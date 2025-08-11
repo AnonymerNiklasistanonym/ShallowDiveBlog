@@ -1,6 +1,6 @@
 ---
 title: C-Strings
-rssFeedDescription: A shallow dive into what C-Strings are and other types of strings
+summary: A shallow dive into what C-Strings are and other types of strings
 date: 2025-05-11
 lastmod: 2025-08-11
 draft: false
