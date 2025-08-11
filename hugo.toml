@@ -25,15 +25,16 @@ theme = "github.com/hugo-sid/hugo-blog-awesome"
 
 [markup]
   [markup.highlight]
-    # Enable code highlight
-    noClasses = false
-  [markup.goldmark.renderer]
-    # Enable TOC
-    unsafe = true
-	[markup.tableOfContents]
-		startLevel = 2 # ToC starts from H2
-		endLevel = 4 # ToC ends at H4
-		ordered = false # generates <ul> instead of <ol>
+    # Enable code syntax highlighting
+    noClasses = false   # Use CSS classes for styling instead of inline styles
+    guessSyntax = true  # Guess language if not specified
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true    # Allow raw HTML in Markdown
+  [markup.tableOfContents]
+    startLevel = 2     # ToC starts from H2
+    endLevel = 4       # ToC ends at H4
+    ordered = false    # Use <ul> instead of <ol>
 
 ############################## All languages ################################
 [params.author]

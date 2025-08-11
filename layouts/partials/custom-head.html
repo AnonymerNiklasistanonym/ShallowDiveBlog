@@ -1,0 +1,2 @@
+{{- $custom_css := resources.Get "css/custom.css" | minify | fingerprint }}
+<link href="{{ $custom_css.RelPermalink }}" rel="stylesheet">

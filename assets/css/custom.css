@@ -1,0 +1,4 @@
+/* Make content wider (default was 700px) */
+.wrapper {
+  max-width: calc(900px - (30px * 2));
+}
