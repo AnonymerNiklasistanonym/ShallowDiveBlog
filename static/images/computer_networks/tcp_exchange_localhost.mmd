@@ -1,0 +1,29 @@
+sequenceDiagram
+    participant Client as Client<br>(127.0.0.1, 55106)
+    participant Server as Server<br>(127.0.0.1, 5000)
+
+    rect rgb(200, 200, 255)
+        note over Client, Server: TCP Handshake Start
+        Client->>Server: SYN Seq=0 Win=65495 Len=0 MSS=65495 SACK_PERM WS=128
+        note right of Client: Client initiates connection<br>SYN & SeqClient=0 (first message)
+        Server-->>Client: SYN, ACK Seq=0 Ack=1 Win=65483 Len=0 MSS=65495 SACK_PERM WS=128
+        note left of Server: Server acknowledges SYN<br>SYN & ClientAck=1 (SYN message received) & SeqServer=0 (first message)
+        Client->>Server: ACK Seq=1 Ack=1 Win=65536 Len=0
+        note right of Client: Client confirms connection established<br>ServerAck=1 (SYN message received) & SeqClient+=1 (second message)
+    end
+
+    Client->>Server: PSH, ACK Seq=1 Ack=1 Win=65536 Len=14
+    note right of Client: Client sends data<br>"Hello, server!" (14 ASCII characters [each 1 byte])<br>ServerAck & SeqClient & Len=14
+
+    Server-->>Client: ACK Seq=1 Ack=15 Win=65536 Len=0
+    note left of Server: Server acknowledges data<br>ClientAck+=Len (continuos received data) & SeqServer
+
+    rect rgb(255, 200, 200)
+        note over Client, Server: TCP Connection Close Start
+        Client->>Server: FIN, ACK Seq=15 Ack=1 Win=65536 Len=0
+        note right of Client: Client initiates connection close
+        Server-->>Client: FIN, ACK Seq=1 Ack=16 Win=65536 Len=0
+        note left of Server: Server agrees to close connection
+        Client->>Server: ACK Seq=16 Ack=2 Win=65536 Len=0
+        note right of Client: Client confirms close
+    end
