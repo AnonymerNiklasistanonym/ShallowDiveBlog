@@ -1,0 +1,32 @@
+<!-- Read external asciinema recording file and load a asciinema player -->
+{{/*
+    Example in a content file which references a file from the static directory:
+    {{< asciinema file="code/computer_networks/tcp/tcp_recording.cast" autoplay="true" loop="true" cols="100" rows="36" >}}
+*/}}
+<link rel="stylesheet" href="{{ "css/asciinema-player.css" | relURL }}">
+<script src="{{ "js/asciinema-player.min.js" | relURL }}"></script>
+
+{{ $file := .Get "file" }}
+{{ $autoplay := .Get "autoplay" | default "false" }}
+{{ $loop := .Get "loop" | default "false" }}
+{{ $cols := .Get "cols" | default "80" }}
+{{ $rows := .Get "rows" | default "24" }}
+
+{{ $uniqueID := printf "asciinema-%d" (now.UnixNano) }}
+
+<div id="{{ $uniqueID }}"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  AsciinemaPlayer.create(
+    "{{ $file | relURL }}",
+    document.getElementById("{{ $uniqueID }}"),
+    {
+      autoplay: {{ eq $autoplay "true" }},
+      loop: {{ eq $loop "true" }},
+      cols: {{ $cols }},
+      rows: {{ $rows }}
+    }
+  );
+});
+</script>
