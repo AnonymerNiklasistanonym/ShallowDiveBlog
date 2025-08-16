@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Counter</title>
+  <style>
+    body {
+      font: 2rem sans-serif;
+      text-align: center;
+      margin: 1rem;
+      background-color: #222431;
+    }
+    button {
+      font-size: 1rem;
+      padding: 0.5rem 1rem; /* Make button bigger */
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+    p {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <p id="count">0</p>
+  <button id="increase">Increment (iframe)</button>
+  <button id="alert">Alert (iframe)</button><br>
+  <button id="message">Post message (iframe -> parent)</button>
+  <button id="notify">Edit DOM directly (iframe -> parent)</button>
+  <script>
+    let count = 0;
+    const display = document.getElementById("count");
+    const buttonIncrease = document.getElementById("increase");
+    const buttonNotify = document.getElementById("notify");
+    const buttonAlert = document.getElementById("alert");
+    const buttonMessage = document.getElementById("message");
+    const increase = () => {
+      count++;
+      display.textContent = count;
+    };
+    // Buttons
+    buttonIncrease.addEventListener("click", increase);
+    buttonNotify.addEventListener('click', () => {
+      const buttons = window.parent.document.querySelectorAll("button");
+      const originalColors = Array.from(buttons).map(b => b.style.backgroundColor);
+      // Make buttons red
+      buttons.forEach(b => b.style.backgroundColor = "red");
+      // Reset after 2 seconds
+      setTimeout(() => {
+        buttons.forEach((b, i) => b.style.backgroundColor = originalColors[i]);
+      }, 500);
+    });
+    buttonAlert.addEventListener('click', () => {
+      alert("Alert in iframe!");
+    });
+    buttonMessage.addEventListener('click', () => {
+      window.parent.postMessage("hello", "*");
+    });
+    // Listen for messages from parent
+    window.addEventListener("message", (e) => {
+      if (e.data === "increment") {
+        increase();
+      }
+    });
+  </script>
+</body>
+</html>
