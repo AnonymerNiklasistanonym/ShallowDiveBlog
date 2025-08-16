@@ -1,0 +1,16 @@
+@startuml
+skinparam sequenceMessageAlign center
+
+participant Client
+participant Server
+
+Client ->> Server: SYN\nSeq=0 Win=65495 Len=0 MSS=65495 SACK_PERM TSval=3192259273 WS=128
+Server ->> Client: SYN, ACK\nSeq=0 Ack=1 Win=65483 Len=0 MSS=65495 SACK_PERM TSval=3192259273 WS=128
+Client ->> Server: ACK\nSeq=1 Ack=1 Win=65536 Len=0
+Client ->> Server: PSH, ACK\nSeq=1 Ack=1 Win=65536 Len=14\n(Data payload)
+Server ->> Client: ACK\nSeq=1 Ack=15 Win=65536 Len=0
+Server ->> Client: FIN, ACK\nSeq=1 Ack=15 Win=65536 Len=0
+Client ->> Server: ACK\nSeq=15 Ack=2 Win=65536 Len=0
+Client ->> Server: FIN, ACK\nSeq=15 Ack=2 Win=65536 Len=0
+Server ->> Client: ACK\nSeq=2 Ack=16 Win=65536 Len=0
+@enduml
