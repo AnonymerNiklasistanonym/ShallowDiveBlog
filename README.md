@@ -175,3 +175,29 @@ Test
 
 - `hide_meta`: `false`/`true` (set `true` if it should hide the page metadata like date and author)
 - `rss`: `false`/`true` (set `false` if it should be hidden from the CSS feed like the about page)
+
+## `git` structure
+
+- `main`: Everything across articles like shortcodes, image generation, documentation, ...
+- `post-$title`: A branch for a article/post that is currently in the works that is based on a version of the `main` branch:
+
+  ```sh
+  git switch main
+
+  # Optional to update main
+  git pull origin
+
+  # Create new branch for post
+  git switch -c post-example-title
+  ```
+
+  To update/rebase this branch to the latest changes on `main`:
+
+  ```sh
+  # Optional to update main
+  git switch main
+  git pull origin
+
+  git switch -c post-example-title
+  git rebase main
+  ```
