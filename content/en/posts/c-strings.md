@@ -32,9 +32,9 @@ categories:
 
 The C programming language has a set of functions implementing operations on strings (character/byte strings) in its standard library:
 
-{{< include_code file="static/code/c_strings/demo.c" lang="c" >}}
+{{< include_code file="/static/code/c_strings/demo.c" lang="c" >}}
 
-{{< include_code file="static/code/c_strings/demo.log" lang="text" >}}
+{{< include_code file="/static/code/c_strings/demo.log" lang="text" >}}
 
 While other languages like Java store the length of an array C does not do it.
 It instead has the convention to **null-terminate** every `char[]`/string instead:
@@ -44,9 +44,9 @@ It instead has the convention to **null-terminate** every `char[]`/string instea
 
 Meaning the line `char str1[] = "Hello"` actually stores 6 `char`s where the last one is `NULL`:
 
-{{< include_code file="static/code/c_strings/null_termination.c" lang="c" >}}
+{{< include_code file="/static/code/c_strings/null_termination.c" lang="c" >}}
 
-{{< include_code file="static/code/c_strings/null_termination.log" lang="text" >}}
+{{< include_code file="/static/code/c_strings/null_termination.log" lang="text" >}}
 
 ## Hardware
 
@@ -76,9 +76,9 @@ Meaning the line `char str1[] = "Hello"` actually stores 6 `char`s where the las
   - a `char` is $8$ bits $=1$ byte (on most modern machines)
   - a `wchar_t` is $16/32$ bits  $=$ $2/4$ byte
 
-{{< include_code file="static/code/c_strings/pointer.c" lang="c" >}}
+{{< include_code file="/static/code/c_strings/pointer.c" lang="c" >}}
 
-{{< include_code file="static/code/c_strings/pointer.log" lang="text" >}}
+{{< include_code file="/static/code/c_strings/pointer.log" lang="text" >}}
 
 ## Character encoding
 
@@ -183,12 +183,12 @@ To support all current Unicode code points but still keep the storage size small
 >
 > The bigger size or e.g. resolving the actual encoded symbols with multiple bytes needs to be explicitly counted!
 >
-> {{< include_code file="static/code/c_strings/unicode.c" lang="c" >}}
-> {{< include_code file="static/code/c_strings/unicode.log" lang="text" >}}
+> {{< include_code file="/static/code/c_strings/unicode.c" lang="c" >}}
+> {{< include_code file="/static/code/c_strings/unicode.log" lang="text" >}}
 
 ## Arrays
 
-{{< include_code file="static/code/c_strings/arrays.c" lang="c" >}}
-{{< include_code file="static/code/c_strings/arrays.log" lang="text" >}}
+{{< include_code file="/static/code/c_strings/arrays.c" lang="c" >}}
+{{< include_code file="/static/code/c_strings/arrays.log" lang="text" >}}
 
-{{< include_code file="static/code/c_strings/stack_limit.c" lang="c" >}}
+{{< include_code file="/static/code/c_strings/stack_limit.c" lang="c" >}}
