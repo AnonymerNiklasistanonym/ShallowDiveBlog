@@ -1,9 +1,16 @@
-
-<!-- Read external file and highlight it depending on the code 'lang' tag -->
+{{/*
+    Read external file and highlight it depending on the code 'lang' tag
+*/}}
 {{/*
     Example in a content file which references a file from the static directory:
-    {{< include_code file="static/code/c_strings/c_strings_demo.c" lang="c" >}}
+    {{< include_code file="/static/code/c_strings/c_strings_demo.c" lang="c" >}}
 */}}
 {{ $file := .Get "file" }}
 {{ $lang := .Get "lang" | default "text" }}
-{{ highlight (readFile $file) $lang "" }}
+{{ $filePath := $file | relURL }}
+
+{{ with readFile (printf "%s" $filePath) }}
+    {{ highlight . $lang "" }}
+{{ else }}
+    <pre><code>File not found: {{ $file }}</code></pre>
+{{ end }}
