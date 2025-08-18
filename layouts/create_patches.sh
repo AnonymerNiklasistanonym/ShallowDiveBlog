@@ -6,6 +6,7 @@ file_dir="layouts"
 files=(
   "_default/rss.xml"
   "_default/single.html"
+  "partials/helpers/katex.html"
 )
 
 for file in "${files[@]}"; do
@@ -30,7 +31,7 @@ for file in "${files[@]}"; do
   curl -s -o "${filename}.original" "https://raw.githubusercontent.com/${repo}/refs/tags/${version}/${file_dir}/${file}"
   touch -d "$commit_date" "${filename}.original"
 
-  diff -u "${filename}.original" "$filename" > "${filename}.patch"
+  diff -u "${filename}.original" "$filename" > "$(dirname "$filename")/.$(basename "$filename").patch"
   rm "${filename}.original"
 
   # Return to original directory

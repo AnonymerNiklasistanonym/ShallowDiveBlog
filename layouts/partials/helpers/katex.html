@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="{{ "css/katex.min.css" | relURL }}" />
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="{{ "js/katex.min.js" | relURL }}"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="{{ "js/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ]
+    });"></script>

@@ -8,6 +8,8 @@ rss: false
 ---
 
 - Source Code: https://github.com/AnonymerNiklasistanonym/ShallowDiveBlog
-- Base Theme: https://github.com/hugo-sid/hugo-blog-awesome
-- Site generator: https://gohugo.io/
-- Search: https://pagefind.app/
+- Hugo (Site Generator): https://gohugo.io/
+- Hugo Blog Awesome (Hugo Base Theme): https://github.com/hugo-sid/hugo-blog-awesome
+- Pagefind (Search Indexer/Bar): https://pagefind.app/
+- KaTeX (Math Renderer): https://katex.org/
+- Asciinema Player (Asciinema Terminal Recording Web Player): https://docs.asciinema.org/manual/player/

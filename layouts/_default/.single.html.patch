@@ -1,5 +1,5 @@
 --- single.html.original	2024-09-26 05:47:11.000000000 +0200
-+++ single.html	2025-08-11 23:42:43.608160029 +0200
++++ single.html	2025-08-12 01:12:37.111863905 +0200
 @@ -4,13 +4,56 @@
          <article>
              <header class="header">
@@ -37,7 +37,7 @@
 +                {{ with .Params.categories }}
 +                    <div class="post-meta">
 +                        <strong>{{ i18n "category" 2 }}:</strong>
-+                        {{ range $index, $cat := . }}
++                        {{ range $index, $cat := sort . }}
 +                            {{ if $index }}, {{ end }}
 +                            <a href="{{ "categories/" | relURL }}{{ $cat | urlize }}">{{ $cat }}</a>
 +                        {{ end }}
@@ -47,7 +47,7 @@
 +                {{ with .Params.tags }}
 +                    <div class="post-meta">
 +                        <strong>{{ i18n "tag" 2 }}:</strong>
-+                        {{ range $index, $tag := . }}
++                        {{ range $index, $tag := sort . }}
 +                            {{ if $index }}, {{ end }}
 +                            <a href="{{ "tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
 +                        {{ end }}
