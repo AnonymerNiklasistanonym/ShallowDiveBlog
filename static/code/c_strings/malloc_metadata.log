@@ -1,0 +1,3 @@
+Pointer returned by malloc: 0x562b7de26310 (requested 40 bytes)
+glibc: Raw metadata (first word, contains size + flags): 0x31
+       -> size: 48 bytes

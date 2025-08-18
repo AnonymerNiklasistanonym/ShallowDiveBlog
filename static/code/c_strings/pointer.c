@@ -1,4 +1,6 @@
-#include <stdio.h> // printf
+#include <stdio.h>  // printf
+#include <stdlib.h> // malloc, free
+#include <string.h> // strcpy
 
 void print_array(const char* name, const char* chars) {
     printf("%s [code units]: ", name);
@@ -32,4 +34,24 @@ int main() {
     printf("Static String:           %s\n", staticStr);
     print_array("literalPtr", literalPtr);
     print_array("staticStr ", staticStr);
+
+    // 2. Heap Allocation (manual memory management)
+
+    // Allocate memory for a string on the heap
+    size_t len = strlen("Heap String") + 1;   // +1 for NULL terminator
+    char* heapStr = (char*)malloc(len);
+    if (!heapStr) {
+        perror("malloc failed");
+        return 1;
+    }
+
+    // Copy content into heap memory (mutable)
+    strcpy(heapStr, "Heap String");
+    heapStr[0] = 'h'; // modifying is safe as long as index < strlen
+
+    printf("Heap String:             %s\n", heapStr);
+    print_array("heapStr   ", heapStr);
+
+    // Clean up heap memory
+    free(heapStr);
 }

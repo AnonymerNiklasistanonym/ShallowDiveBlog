@@ -9,6 +9,7 @@ SRC_FILES=(
   "pointer.c"
   "arrays.c"
   "unicode.c"
+  "malloc_metadata.c"
 )
 
 for SRC in "${SRC_FILES[@]}"; do
