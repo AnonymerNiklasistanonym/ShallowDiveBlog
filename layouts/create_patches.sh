@@ -7,6 +7,7 @@ files=(
   "_default/rss.xml"
   "_default/single.html"
   "partials/helpers/katex.html"
+  "partials/meta/post.html"
 )
 
 for file in "${files[@]}"; do

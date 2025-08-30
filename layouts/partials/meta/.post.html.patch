@@ -1,0 +1,15 @@
+--- post.html.original	2024-07-17 08:30:37.000000000 +0200
++++ post.html	2025-08-30 12:28:41.034861033 +0200
+@@ -42,10 +42,10 @@
+         "headline": {{ .Title }},
+         "author": {
+         "@type": "Person",
+-        "name": "{{ .Site.Params.github }}"
++        "name": "{{ or .Params.author .Site.Params.author.name .Site.Params.github }}"
+         },
+         "datePublished": "{{ dateFormat "2006-01-02" .Date }}",
+-        "description": {{ .Description }},
++        "description": {{ or .Description .Summary }},
+         "wordCount": {{ .WordCount }},
+         "mainEntityOfPage": "True",
+         "dateModified": "{{ dateFormat "2006-01-02" .Lastmod }}",
