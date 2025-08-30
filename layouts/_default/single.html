@@ -9,37 +9,40 @@
                 {{ $configDateFormat := .Site.Params.dateFormat | default ":date_medium" }}
                 {{ with .Date }}
                 {{ $ISO_time := dateFormat "2006-01-02T15:04:05-07:00" . }}
+                {{ end }}
                 <div class="post-meta">
-                    <time datetime="{{ $ISO_time }}" itemprop="datePublished"> {{ . | time.Format $configDateFormat }} </time>
-                    <!-- PATCH: Add a last modified timestamp if page has the YAML information 'lastmod: $DATE' -->
-                    {{ $lastmod := $.Lastmod }}
-                    {{ if and $lastmod (ne $.Date $lastmod) }}
-                    {{ $ISO_lastmod := dateFormat "2006-01-02T15:04:05-07:00" $lastmod }}
-                    <small> ({{ i18n "lastmod" }}:
-                        <time datetime="{{ $ISO_lastmod }}" itemprop="dateModified" style="margin-right: 0;">
-                        {{ $lastmod | time.Format $configDateFormat }}
-                        </time>)
-                    </small>
+                    <!-- PATCH: Add local or if not found global author name if page has the YAML information 'author: $NAME' -->
+                    {{ $author := or .Params.author .Site.Params.author.name }}
+                    {{ if $author }}
+                        <strong>{{ i18n "by" }}:</strong>
+                        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <span itemprop="name">{{ $author }}</span>
+                        </span>
+                    {{ end }}
+                    {{ with .Date }}
+                        {{ $ISO_time := dateFormat "2006-01-02T15:04:05-07:00" . }}
+                        <strong>{{ i18n "date" }}:</strong>
+                        <time datetime="{{ $ISO_time }}" itemprop="datePublished" style="margin: 0;">
+                            {{ . | time.Format $configDateFormat }}
+                        </time>
+                        <!-- PATCH: Add a last modified timestamp if page has the YAML information 'lastmod: $DATE' -->
+                        {{ $lastmod := $.Lastmod }}
+                        {{ if and $lastmod (ne $.Date $lastmod) }}
+                            {{ $ISO_lastmod := dateFormat "2006-01-02T15:04:05-07:00" $lastmod }}
+                            <small> ({{ i18n "lastmod" }}:
+                                <time datetime="{{ $ISO_lastmod }}" itemprop="dateModified" style="margin: 0;">
+                                {{ $lastmod | time.Format $configDateFormat }}
+                                </time>)
+                            </small>
+                        {{ end }}
                     {{ end }}
                 </div>
-                {{ end }}
-                <!-- PATCH: Add local or if not found global author name if page has the YAML information 'author: $NAME' -->
-                {{ if .Params.author }}
-                <div class="post-meta">
-                    <small>{{ i18n "by" }}: {{ .Params.author }}</small>
-                </div>
-                {{ else if .Site.Params.author.name }}
-                <div class="post-meta">
-                    <small>{{ i18n "by" }}: {{ .Site.Params.author.name }}</small>
-                </div>
-                {{ end }}
                 <!-- PATCH: Add clickable list of categories -->
                 {{ with .Params.categories }}
                     <div class="post-meta">
                         <strong>{{ i18n "category" 2 }}:</strong>
                         {{ range $index, $cat := sort . }}
-                            {{ if $index }}, {{ end }}
-                            <a href="{{ "categories/" | relURL }}{{ $cat | urlize }}">{{ $cat }}</a>
+                            <a href="{{ "categories/" | relURL }}{{ $cat | urlize }}" class="tag">{{ $cat }}</a>
                         {{ end }}
                     </div>
                 {{ end }}
@@ -48,8 +51,7 @@
                     <div class="post-meta">
                         <strong>{{ i18n "tag" 2 }}:</strong>
                         {{ range $index, $tag := sort . }}
-                            {{ if $index }}, {{ end }}
-                            <a href="{{ "tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+                            <a href="{{ "tags/" | relURL }}{{ $tag | urlize }}" class="tag">{{ $tag }}</a>
                         {{ end }}
                     </div>
                 {{ end }}

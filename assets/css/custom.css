@@ -2,3 +2,31 @@
 .wrapper {
   max-width: calc(900px - (30px * 2));
 }
+
+/* Make tags/categories more beautiful than just a list */
+a.tag {
+  background-color: #edecec;
+  color: #333;
+  display: inline-flex;
+  padding: 0.4rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+
+  &:hover,
+  &:active {
+    background-color: #d5d5d5;
+  }
+}
+/* Tag dark mode overrides */
+html.dark a.tag {
+  background-color: #323232;
+  color: #eaeaea;
+
+  &:hover,
+  &:active {
+    background-color: #444;
+  }
+}
