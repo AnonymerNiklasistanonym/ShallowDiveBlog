@@ -30,3 +30,10 @@ html.dark a.tag {
     background-color: #444;
   }
 }
+
+/* Make iframes look similar (background color, radius) as code sections */
+iframe {
+  border: none;
+  border-radius: .3rem;
+  background-color: #222431;
+}
