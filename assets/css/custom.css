@@ -37,3 +37,33 @@ iframe {
   border-radius: .3rem;
   background-color: #222431;
 }
+
+/* Simple readmore shortcut */
+a.readmore {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 1rem;
+  background: none;
+  text-decoration: none;
+  border: 0.15rem solid #333;
+  border-radius: 10rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &::before {
+    content: "→";
+    padding-right: 0.5rem;
+  }
+}
+/* Simple readmore dark mode overrides */
+html.dark a.readmore {
+  border-color: #eaeaea;
+  color: #eaeaea;
+}
+/* Simple readmore hover overrides */
+html a.readmore {
+  &:hover,
+  &:active {
+    color: #5292ff;
+    border-color: #5292ff;
+  }
+}

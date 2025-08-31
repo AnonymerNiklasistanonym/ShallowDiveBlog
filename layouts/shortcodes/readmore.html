@@ -1,0 +1,15 @@
+{{/*
+    Create "Read more" link to e.g. another article
+*/}}
+{{/*
+    Example in a content file which references a file from the static directory:
+    {{< readmore url="../computer-networks" text="Read more about TCP" >}}
+    In case the link should open a new page:
+    {{< readmore ... target="_blank" >}}
+*/}}
+<a href="{{ .Get "url" }}"
+   class="readmore"
+   {{ with .Get "target" }}target="{{ . }}"{{ else }}target="_self"{{ end }}
+   rel="noopener">
+  {{ .Get "text" }}
+</a>
