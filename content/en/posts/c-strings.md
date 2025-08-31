@@ -2,7 +2,7 @@
 title: C-Strings
 summary: A shallow dive into what C-Strings are and other types of strings
 date: 2025-05-11
-lastmod: 2025-08-18
+lastmod: 2025-08-31
 draft: false
 math: true
 tags:
@@ -276,12 +276,13 @@ To support all current Unicode code points but still keep the storage size small
 
       ```text
       // UTF-8 encoding pattern for 2-byte characters:
-         110x xxxx   10xx xxxx
+         110x xxyy   10yy zzzz
       // Filling in the bits of 00E4:
       // -> 0000 0000 1110 0100
+      //    wwww xxxx yyyy zzzz
       //
       //    0 0011     10 0100
-      // 110         10
+      // 110x xxyy   10yy zzzz
          1100 0011   1010 0100
       ```
 
