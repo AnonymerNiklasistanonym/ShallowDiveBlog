@@ -1,0 +1,21 @@
+{{/*
+    Do not escape symbols to render them correctly via KaTeX
+    (requires 'math: true'!)
+*/}}
+{{/*
+    Example in a content file:
+    {{< mathblock >}}
+    \begin{aligned}
+    f(x) &= x^2 + 2x + 1 \\
+         &= (x+1)^2
+    \end{aligned}
+    {{< /mathblock >}}
+*/}}
+{{/*
+    In case an escaped symbol ever breaks KaTeX rendering use '{{ .Inner | safeHTML }}'
+*/}}
+<div>
+$$
+{{ .Inner }}
+$$
+</div>
