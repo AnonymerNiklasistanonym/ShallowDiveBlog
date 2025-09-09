@@ -17,6 +17,7 @@ _gen/
 
 # Temporary python files
 __pycache__
+venv*
 
 # Temporary aspell files
 *md.bak
