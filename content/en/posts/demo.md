@@ -90,11 +90,13 @@ echo "Code block"
 # Math does not work in comments! ($1 + 1 = 2$)
 ```
 
-> It's also possible to include code from a file in the `static` directory:
+> It's also possible to include code from a file in the `static/code` directory:
 >
 > ```md
 > {{</* include_code file="examples/hello_world.c" lang="c" */>}}
 > ```
+> 
+> (in this case for the file `static/code/examples/hello_world.c`)
 
 {{< include_code file="examples/hello_world.c" lang="c" >}}
 
