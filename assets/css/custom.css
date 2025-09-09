@@ -67,3 +67,18 @@ html a.readmore {
     border-color: #5292ff;
   }
 }
+
+/* Note shortcode box */
+html div.note-box {
+  border-left: 4px solid #007BFF;
+  background: #d2e6f7;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+  color: black;
+}
+html.dark div.note-box {
+  border-left: 4px solid #007BFF;
+  background: #00396b;
+  color: white;
+}

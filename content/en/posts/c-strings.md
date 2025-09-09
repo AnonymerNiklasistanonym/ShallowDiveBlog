@@ -21,9 +21,9 @@ categories:
 
 The C programming language has a set of functions implementing operations on strings (character/byte strings) in its standard library:
 
-{{< include_code file="/static/code/c_strings/demo.c" lang="c" >}}
+{{< include_code file="c_strings/demo.c" lang="c" >}}
 
-{{< include_code file="/static/code/c_strings/demo.log" lang="text" >}}
+{{< include_code file="c_strings/demo.log" lang="text" >}}
 
 There is no real *string* data type but instead `char[]` are used (character arrays).
 Also while other languages like Java store the length of an array C instead has the convention to **null-terminate** every `char[]` instead:
@@ -34,9 +34,9 @@ Also while other languages like Java store the length of an array C instead has 
 
 Meaning the line `char str1[] = "Hello"` actually stores 6 `char`s where the last one is `NULL`:
 
-{{< include_code file="/static/code/c_strings/null_termination.c" lang="c" >}}
+{{< include_code file="c_strings/null_termination.c" lang="c" >}}
 
-{{< include_code file="/static/code/c_strings/null_termination.log" lang="text" >}}
+{{< include_code file="c_strings/null_termination.log" lang="text" >}}
 
 ## Hardware
 
@@ -134,13 +134,13 @@ There are 3 memory areas:
 
 Demo for metadata on the heap on Linux with `malloc` and `glibc`:
 
-{{< include_code file="/static/code/c_strings/malloc_metadata.c" lang="c" >}}
+{{< include_code file="c_strings/malloc_metadata.c" lang="c" >}}
 
-{{< include_code file="/static/code/c_strings/malloc_metadata.log" lang="text" >}}
+{{< include_code file="c_strings/malloc_metadata.log" lang="text" >}}
 
 Demo for reaching the stack limit with a big stack allocation:
 
-{{< include_code file="/static/code/c_strings/stack_limit.c" lang="c" >}}
+{{< include_code file="c_strings/stack_limit.c" lang="c" >}}
 
 ### Pointers in C
 
@@ -191,9 +191,9 @@ Demo for reaching the stack limit with a big stack allocation:
 
 Demo for the different pointer types:
 
-{{< include_code file="/static/code/c_strings/pointer.c" lang="c" >}}
+{{< include_code file="c_strings/pointer.c" lang="c" >}}
 
-{{< include_code file="/static/code/c_strings/pointer.log" lang="text" >}}
+{{< include_code file="c_strings/pointer.log" lang="text" >}}
 
 ## Character encoding
 
@@ -299,8 +299,8 @@ To support all current Unicode code points but still keep the storage size small
 >
 > The bigger size or e.g. resolving the actual encoded symbols with multiple bytes needs to be explicitly counted!
 >
-> {{< include_code file="/static/code/c_strings/unicode.c" lang="c" >}}
-> {{< include_code file="/static/code/c_strings/unicode.log" lang="text" >}}
+> {{< include_code file="c_strings/unicode.c" lang="c" >}}
+> {{< include_code file="c_strings/unicode.log" lang="text" >}}
 
 ## Arrays/Pointer Arithmetic
 
@@ -308,9 +308,9 @@ C always knows thanks to the pointer signature `int* array` the size of each ele
 
 Using now `arr[index]` or `*(arr + index)` it can thus translate the memory location to the first element stored in the pointer to the correct memory offset of the array element which is called pointer arithmetic:
 
-{{< include_code file="/static/code/c_strings/arrays.c" lang="c" >}}
+{{< include_code file="c_strings/arrays.c" lang="c" >}}
 
-{{< include_code file="/static/code/c_strings/arrays.log" lang="text" >}}
+{{< include_code file="c_strings/arrays.log" lang="text" >}}
 
 Funnily enough this means that the following is true:
 

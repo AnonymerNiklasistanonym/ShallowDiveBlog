@@ -9,8 +9,8 @@ ZIP_URL="https://github.com/asciinema/asciinema-player/releases/download/v$ASCII
 JS_URL="https://github.com/asciinema/asciinema-player/releases/download/v$ASCIINEMA_VERSION/asciinema-player.min.js"
 
 # Target directories
-CSS_DIR="static/css"
-JS_DIR="static/js"
+CSS_DIR="assets/css/asciinema"
+JS_DIR="assets/js/asciinema"
 CWD=$(pwd)
 
 rm -f "$CSS_DIR/asciinema-player.css" "$JS_DIR/asciinema-player.min.js"

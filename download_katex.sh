@@ -8,9 +8,9 @@ KATEX_VERSION="0.16.22"
 ZIP_URL="https://github.com/KaTeX/KaTeX/releases/download/v$KATEX_VERSION/katex.zip"
 
 # Target directories
-CSS_DIR="static/css"
-JS_DIR="static/js"
-FONTS_DIR="static/css/fonts"
+CSS_DIR="static/css/katex"
+JS_DIR="assets/js/katex"
+FONTS_DIR="$CSS_DIR/fonts"
 CWD=$(pwd)
 
 rm -rf "$FONTS_DIR"

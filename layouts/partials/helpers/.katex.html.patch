@@ -1,6 +1,6 @@
 --- katex.html.original	2024-03-04 14:12:55.000000000 +0100
-+++ katex.html	2025-08-18 06:40:57.629112732 +0200
-@@ -1,14 +1,10 @@
++++ katex.html	2025-09-09 02:09:34.812617281 +0200
+@@ -1,16 +1,14 @@
 -<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
 -    integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" crossorigin="anonymous" />
 +<link rel="stylesheet" href="{{ "css/katex.min.css" | relURL }}" />
@@ -9,12 +9,17 @@
 -<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
 -    integrity="sha512-LQNxIMR5rXv7o+b1l8+N1EZMfhG7iFZ9HhnbJkTp4zjNr5Wvst75AqUeFDxeRUa7l5vEDyUiAip//r+EFLLCyA=="
 -    crossorigin="anonymous"></script>
-+<script defer src="{{ "js/katex.min.js" | relURL }}"></script>
++{{- $katex_js := resources.Get "js/katex/katex.min.js" | minify | fingerprint -}}
++<script src="{{ $katex_js.RelPermalink }}" defer></script>
  
  <!-- To automatically render math in text elements, include the auto-render extension: -->
 -<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
 -    integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous" onload="renderMathInElement(document.body, {
-+<script defer src="{{ "js/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {
++{{- $katexar_js := resources.Get "js/katex/auto-render.min.js" | minify | fingerprint -}}
++<script src="{{ $katexar_js.RelPermalink }}" onload="renderMathInElement(document.body, {
        delimiters: [
          {left: '$$', right: '$$', display: true},
          {left: '$', right: '$', display: false}
+       ]
+-    });"></script>
++    });" defer></script>

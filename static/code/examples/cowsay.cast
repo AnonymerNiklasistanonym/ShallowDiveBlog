@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":100,"rows":36,"type":"xterm-256color","version":"Konsole 25.08.0","theme":{"fg":"#17a88b","bg":"#1e2229","palette":"#000000:#b21818:#18b218:#b26818:#1818b2:#b218b2:#18b2b2:#b2b2b2:#686868:#ff5454:#54ff54:#ffff54:#5454ff:#ff54ff:#54ffff:#ffffff"}},"timestamp":1757374258,"env":{"SHELL":"/bin/bash"}}
+[0, "o", "\u001b]0;niklas@niklas-ms7977:~/Documents/GitHubSSH/ShallowDiveBlog\u0007"]
+[0, "o", "\u001b[?2004h"]
+[0, "o", "\u001b[01;32m[niklas@niklas-ms7977\u001b[01;37m ShallowDiveBlog\u001b[01;32m]$\u001b[00m "]
+[0, "o", "cowsay"]
+[1, "o", " hello world"]
+[1, "o", "\r\n\u001b[?2004l\r"]
+[0.028118, "o", " _____________\r\n< hello world >\r\n -------------\r\n        \\   ^__^\r\n         \\  (oo)\\_______\r\n            (__)\\       )\\/\\\r\n                ||----w |\r\n                ||     ||\r\n"]
+[2, "x", "0"]

@@ -3,3 +3,11 @@
 <!-- add an additional stylesheet from the assets folder into the site, also minify it like the other files if requested -->
 {{- $custom_css := resources.Get "css/custom.css" | minify | fingerprint }}
 <link href="{{ $custom_css.RelPermalink }}" rel="stylesheet">
+
+{{- /* Include Asciinema player assets if `asciinema` is true */ -}}
+{{- if or (eq (.Params.asciinema) true) (and (isset .Site.Params "asciinema") (eq .Site.Params.asciinema true)) }}
+    {{- $asc_css := resources.Get "css/asciinema/asciinema-player.css" | minify | fingerprint -}}
+    <link href="{{ $asc_css.RelPermalink }}" rel="stylesheet">
+    {{- $asc_js := resources.Get "js/asciinema/asciinema-player.min.js" | minify | fingerprint -}}
+    <script src="{{ $asc_js.RelPermalink }}" defer></script>
+{{- end }}
