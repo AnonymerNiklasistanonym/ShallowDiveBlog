@@ -95,7 +95,7 @@ echo "Code block"
 > ```md
 > {{</* include_code file="examples/hello_world.c" lang="c" */>}}
 > ```
-> 
+>
 > (in this case for the file `static/code/examples/hello_world.c`)
 
 {{< include_code file="examples/hello_world.c" lang="c" >}}

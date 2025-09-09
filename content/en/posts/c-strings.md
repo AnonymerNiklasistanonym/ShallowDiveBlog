@@ -60,26 +60,30 @@ Meaning the line `char str1[] = "Hello"` actually stores 6 `char`s where the las
 
 - on a hardware level all characters are stored as:
   - consecutive (*in memory*)
-  
+
   - fixed width (*all characters have the same bit length*)
-    
-    $$
+
+    {{< mathblock >}}
     \overbrace{00001010}^{\text{character } 1}\overbrace{00000010}^{\text{character }2}\dots\overbrace{00000000}^{\text{last character }}
-    $$
-  
+    {{< /mathblock >}}
+
   - unsigned binary integers (*each character represents a positive number*)
-    
-    $$
-    00001010_2 = 2^0*0 + 2^1 * 1 + 2^2 * 0 + 2^3 * 1 + 2^4 * 0 + \dots
-               = 2_{10} + 8_{10} = {10}_{10}
-    $$
-    
+
+    {{< mathblock >}}
+    \begin{aligned}
+    00001010_2 &= 2^0*0 + 2^1 * 1 + 2^2 * 0 + 2^3 * 1 + 2^4 * 0 + \dots \\
+               &= 2_{10} + 8_{10} = {10}_{10}
+    \end{aligned}
+    {{< /mathblock >}}
+
   - terminated at the end by an additional zero code unit (**all code units before are non-zero**)
-    
-    $$
-    00000000_2 = 2^0*0 + 2^1 * 0 + \dots
-               = 0_{10}
-    $$
+
+    {{< mathblock >}}
+    \begin{aligned}
+    00000000_2 &= 2^0*0 + 2^1 * 0 + \dots \\
+               &= 0_{10}
+    \end{aligned}
+    {{< /mathblock >}}
 
 - when speaking of *strings* normally code units of type `char`/`wchar_t` are meant
 
@@ -92,45 +96,46 @@ There are 3 memory areas:
 
 1. **Registers**: *(in CPU, managed by the CPU, generally not accessible)*
 
-  - Extremely fast but tiny storage inside the CPU 
-  - Each register has the width of the bit count of the CPU ($32$ bit = $32$ bit registers)
-  - Example a modern `x86-64` $64$-bit CPU like the AMD Ryzen 7 7800X3D has per Instruction Set Architecture (ISA):
-    - $16$ general purpose registers where each one is $64$-bits wide: integer arithmetic, pointer storage, function arguments, local storage, ...
-    - Some special registers like the instruction pointer register: tracks the address of the next instruction to execute
-    - SIMD/floating-point registers: AVX-$512$ allows up to $32 \times 512$-bit vector registers
-    - Some legacy registers that remain largely unused
-    - **BUT** in reality on the microarchitecture level there are hundreds of more registers to enable out-of-order execution, pipelining, ...
+   - Extremely fast but tiny storage inside the CPU
+   - Each register has the width of the bit count of the CPU ($32$ bit = $32$ bit registers)
+   - Example a modern `x86-64` $64$-bit CPU like the AMD Ryzen 7 7800X3D has per Instruction Set Architecture (ISA):
+     - $16$ general purpose registers where each one is $64$-bits wide: integer arithmetic, pointer storage, function arguments, local storage, ...
+     - Some special registers like the instruction pointer register: tracks the address of the next instruction to execute
+     - SIMD/floating-point registers: AVX-$512$ allows up to $32 \times 512$-bit vector registers
+     - Some legacy registers that remain largely unused
+     - **BUT** in reality on the microarchitecture level there are hundreds of more registers to enable out-of-order execution, pipelining, ...
 2. **Stack**: *(in RAM, managed by CPU/OS)*
 
-  ```c
-  void f() {
-      int arr[1024]; // 4 KB on the stack
-  } // automatically freed when function returns
-  ```
+   ```c
+   void f() {
+       int arr[1024]; // 4 KB on the stack
+   } // automatically freed when function returns
+   ```
 
-  - A contiguous block of memory that (usually limited, e.g. $8$MB per thread) stores local variables and function call information
-  - Memory is allocated when a function is called and freed when it returns
-  - If you exceed it the CPU throws a page fault/the OS throws a stack overflow exception
+   - A contiguous block of memory that (usually limited, e.g. $8$MB per thread) stores local variables and function call information
+   - Memory is allocated when a function is called and freed when it returns
+   - If you exceed it the CPU throws a page fault/the OS throws a stack overflow exception
+
 3. **Heap**: (*in RAM, managed by OS*)
 
-  ```c
-  void f() {
-      int* arr = malloc(1024 * sizeof(int)); // 4 KB on heap
-      // it actually allocates some additonal metadata
-      // ...
-      free(arr); // must be manually released
-      // free knows through the metadata "how much" it needs to free
-      // free also frees the metadata so it's only possible to call it once
-  }
-  ```
+   ```c
+   void f() {
+       int* arr = malloc(1024 * sizeof(int)); // 4 KB on heap
+       // it actually allocates some additonal metadata
+       // ...
+       free(arr); // must be manually released
+       // free knows through the metadata "how much" it needs to free
+       // free also frees the metadata so it's only possible to call it once
+   }
+   ```
 
-  - A region of memory used for dynamic allocation
-  - Memory is manually managed:
-    - First the memory is requested with e.g. `malloc`
-    - Then it must be explicitly released with e.g. `free()`
-  - The heap is larger and more flexible than the stack, but access is generally slower because for example:
-    - Sometimes memory is not one contiguous block
-    - Fragmentation creates holes and finding a suitable free block can take time during allocation
+   - A region of memory used for dynamic allocation
+   - Memory is manually managed:
+     - First the memory is requested with e.g. `malloc`
+     - Then it must be explicitly released with e.g. `free()`
+   - The heap is larger and more flexible than the stack, but access is generally slower because for example:
+     - Sometimes memory is not one contiguous block
+     - Fragmentation creates holes and finding a suitable free block can take time during allocation
 
 Demo for metadata on the heap on Linux with `malloc` and `glibc`:
 
@@ -155,7 +160,7 @@ Demo for reaching the stack limit with a big stack allocation:
 
    - Pointers can reference variables allocated on the stack
    - Lifetime ends when the function scope ends, all memory is automatically released, **the memory location is now hot garbage that crashes your program if you look at it!**
-   
+
 2. **Heap Allocation**
 
    ```c
@@ -178,13 +183,14 @@ Demo for reaching the stack limit with a big stack allocation:
    ```
 
    - String literals are stored in read-only memory (implementation-defined)
-   
+
      - Memory efficiency
      - Safety from accidental modification
      - Faster access
      - Functions that take `const char *` can safely accept string literals without copying
    - Modifying the contents leads to **undefined behavior!**
    - Use `const char *` to make intent explicit (and help the compiler):
+
      ```c
      const char *s = "hello";
      ```
