@@ -1,3 +1,76 @@
-<div class="note-box">
-  {{ .Inner | markdownify }}
+{{/*
+    Create note section (info/warning)
+*/}}
+{{/*
+    Example in a content file:
+    {{< note >}}
+    This is a custom note!
+    {{< /note >}}
+
+    {{< note type="bad" >}}
+    This is a custom note!
+    {{< /note >}}
+
+    {{< note type="check" >}}
+    This is a custom note!
+    {{< /note >}}
+
+    {{< note type="warning" >}}
+    This is a custom note!
+    {{< /note >}}
+*/}}
+
+{{ $type := .Get "type" | default "info" }}
+{{ $image := "" }}
+{{ $imageDark := "" }}
+{{ $licenseInfo := "" }}
+
+{{/* Set default icons based on type if not provided */}}
+{{ if eq $type "info" }}
+  {{ $image = "icons/reshot-icon-information.svg" }}
+  {{ $imageDark = "icons/reshot-icon-information-dark.svg" }}
+  {{ $licenseInfo = "from Interface Icons - Solid Style by @roywj under Reshot Stock Icon Free License" }}
+{{ else if eq $type "bad" }}
+  {{ $image = "icons/reshot-icon-close-circle.svg" }}
+  {{ $imageDark = "icons/reshot-icon-close-circle-dark.svg" }}
+  {{ $licenseInfo = "from Interface Icons - Solid Style by @roywj under Reshot Stock Icon Free License" }}
+{{ else if eq $type "check" }}
+  {{ $image = "icons/reshot-icon-tick-circle.svg" }}
+  {{ $imageDark = "icons/reshot-icon-tick-circle-dark.svg" }}
+  {{ $licenseInfo = "from Interface Icons - Solid Style by @roywj under Reshot Stock Icon Free License" }}
+{{ else if eq $type "warning" }}
+  {{ $image = "icons/reshot-icon-warning-circle.svg" }}
+  {{ $imageDark = "icons/reshot-icon-warning-circle-dark.svg" }}
+  {{ $licenseInfo = "from Interface Icons - Solid Style by @roywj under Reshot Stock Icon Free License" }}
+{{ else }}
+  {{ warnf "shortcode warning 'note': unsupported note type %q (source: %q)" $type .Page.File.Path }}
+{{ end }}
+
+<div class="note-box {{ $type }}">
+
+  {{ if or $image $imageDark }}
+    <span class="note-icon">
+      {{ $page := .Page }}
+      {{ with $image }}
+        {{ $res := resources.Get . }}
+        {{ if $res }}
+          <img class="light" src="{{ $res.RelPermalink }}" alt="{{ $type }} icon {{ $licenseInfo }}" />
+        {{ else }}
+          {{ warnf "shortcode warning 'note': unable to load icon file %q (source: %q)" . $page.File.Path }}
+        {{ end }}
+      {{ end }}
+      {{ with $imageDark }}
+        {{ $resDark := resources.Get . }}
+        {{ if $resDark }}
+          <img class="dark" src="{{ $resDark.RelPermalink }}" alt="{{ $type }} icon {{ $licenseInfo }}" />
+        {{ else }}
+          {{ warnf "shortcode warning 'note': unable to load icon file %q (source: %q)" . $page.File.Path }}
+        {{ end }}
+      {{ end }}
+    </span>
+  {{ end }}
+
+  <div class="note-content">
+    {{ .Inner | markdownify }}
+  </div>
 </div>

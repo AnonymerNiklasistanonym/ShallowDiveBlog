@@ -179,6 +179,18 @@ Continues numeration across page:
 This is a custom note!
 {{< /note >}}
 
+{{< note type="bad" >}}
+This is a custom note!
+{{< /note >}}
+
+{{< note type="check" >}}
+This is a custom note!
+{{< /note >}}
+
+{{< note type="warning" >}}
+This is a custom note!
+{{< /note >}}
+
 ## Terminal Recordings (Asciinema)
 
 > Asciinema recordings stored in `static/.../recording.cast` can be referenced when enabled in the header:

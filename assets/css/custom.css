@@ -4,8 +4,14 @@
   --backdrop-color: #edecec;
   --backdrop-color-hovered: #d5d5d5;
   --code-block-background-color: #222431;
-  --note-accent-color: #007BFF;
-  --note-background-color: #d2e6f7;
+  --note-bad-color: #ce0000;
+  --note-check-color: #22ce00;
+  --note-info-color: #007BFF;
+  --note-warning-color: #ff8800;
+  --note-bad-background-color: #ff7878;
+  --note-check-background-color: #7dd36c;
+  --note-info-background-color: #d2e6f7;
+  --note-warning-background-color: #ffb574;
   --note-text-color: black;
   --readmore-border-color: #c9cdd0;
 }
@@ -15,7 +21,10 @@ html.dark {
   --link-color-hovered: #5292ff;
   --backdrop-color: #323232;
   --backdrop-color-hovered: #444;
-  --note-background-color: #00396b;
+  --note-bad-background-color: #a20000;
+  --note-check-background-color: #4c7f41;
+  --note-info-background-color: #00396b;
+  --note-warning-background-color: #a15e00;
   --note-text-color: white;
   --readmore-border-color: #44474f;
 }
@@ -75,11 +84,48 @@ html a.readmore {
 }
 
 /* Note shortcode box */
-html div.note-box {
-  border-left: 7px solid var(--note-accent-color);
-  background: var(--note-background-color);
+.note-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
   padding: 1em;
   margin: 1em 0;
   border-radius: 7px;
   color: var(--note-text-color);
+}
+/* Icon */
+.note-icon {
+  font-size: 1.3em;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+.note-icon img {
+  width: 1.5em;
+  height: 1.5em;
+}
+/* Light mode: hide the dark icon */
+html.light .note-icon img.dark {
+  display: none;
+}
+/* Dark mode: hide the light icon */
+html.dark .note-icon img.light {
+  display: none;
+}
+/* Types */
+.note-box.bad {
+  border-left: 7px solid var(--note-bad-color);
+  background: var(--note-bad-background-color);
+}
+.note-box.check {
+  border-left: 7px solid var(--note-check-color);
+  background: var(--note-check-background-color);
+}
+.note-box.info {
+  border-left: 7px solid var(--note-info-color);
+  background: var(--note-info-background-color);
+}
+.note-box.warning {
+  border-left: 7px solid var(--note-warning-color);
+  background: var(--note-warning-background-color);
 }
