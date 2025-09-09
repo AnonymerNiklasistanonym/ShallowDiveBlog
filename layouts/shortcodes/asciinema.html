@@ -15,19 +15,25 @@
 
 {{ $uniqueID := printf "asciinema-%d" (now.UnixNano) }}
 
-<div id="{{ $uniqueID }}"></div>
+{{/* Check if the file exists */}}
+{{ with readFile (printf "static/%s" $file) }}
+  <div id="{{ $uniqueID }}"></div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  AsciinemaPlayer.create(
-    "{{ $file | relURL }}",
-    document.getElementById("{{ $uniqueID }}"),
-    {
-      autoplay: {{ eq $autoplay "true" }},
-      loop: {{ eq $loop "true" }},
-      cols: {{ $cols }},
-      rows: {{ $rows }}
-    }
-  );
-});
-</script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AsciinemaPlayer.create(
+      "{{ $file | relURL }}",
+      document.getElementById("{{ $uniqueID }}"),
+      {
+        autoplay: {{ eq $autoplay "true" }},
+        loop: {{ eq $loop "true" }},
+        cols: {{ $cols }},
+        rows: {{ $rows }}
+      }
+    );
+  });
+  </script>
+{{ else }}
+  {{ warnf "shortcode warning 'asciinema': file not found %q (source: %q)" $file .Page.File.Path }}
+  <pre><code>[Asciinema file not found: {{ $file }}]</code></pre>
+{{ end }}

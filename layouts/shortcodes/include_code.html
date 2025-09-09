@@ -12,5 +12,6 @@
 {{ with readFile (printf "%s" $filePath) }}
     {{ highlight . $lang "" }}
 {{ else }}
+    {{ warnf "shortcode error 'include_code': file not found %q (source: %q)" $file .Page.File.Path }}
     <pre><code>File not found: {{ $file }}</code></pre>
 {{ end }}

@@ -3,7 +3,7 @@ title: Demo Post [en-us]
 summary: Demo description
 author: Custom Author
 date: 2025-08-10
-lastmod: 2025-09-07
+lastmod: 2025-09-09
 slug: demo-custom-slug
 tags:
   - Demo
@@ -172,6 +172,10 @@ Continues numeration across page:
 {{< note >}}
 This is a custom note!
 {{< /note >}}
+
+## Read More
+
+{{< readmore url="posts/demo.md" text="Read more on the demo page" >}}
 
 ## Terminal Recordings (Asciinema)
 

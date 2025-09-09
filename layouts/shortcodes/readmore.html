@@ -6,10 +6,25 @@
     {{< readmore url="../computer-networks" text="Read more about TCP" >}}
     In case the link should open a new page:
     {{< readmore ... target="_blank" >}}
+    In case the URL starts with "posts/" it will automatically find the relative path if it exists.
 */}}
-<a href="{{ .Get "url" }}"
+
+{{ $url := .Get "url" }}
+{{ $text := .Get "text" }}
+
+{{ if strings.HasPrefix $url "posts/" }}
+    {{ $p := .Page.Site.GetPage $url }}
+    {{ if $p }}
+        {{ $url = $p.RelPermalink }}
+    {{ else }}
+        {{ $text = printf "%s [Relative page %q not found]" $text $url }}
+        {{ warnf "shortcode error 'readmore': invalid page %q (source: %q)" $url .Page.File.Path }}
+    {{ end }}
+{{ end }}
+
+<a href="{{ $url }}"
    class="readmore"
    {{ with .Get "target" }}target="{{ . }}"{{ else }}target="_self"{{ end }}
    rel="noopener">
-  {{ .Get "text" }}
+  {{ $text }}
 </a>
