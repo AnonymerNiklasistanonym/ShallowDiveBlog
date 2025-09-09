@@ -1,33 +1,45 @@
+:root {
+  --link-color: #003fff;
+  --link-color-hovered: #0036c7;
+  --backdrop-color: #edecec;
+  --backdrop-color-hovered: #d5d5d5;
+  --code-block-background-color: #222431;
+  --note-accent-color: #007BFF;
+  --note-background-color: #d2e6f7;
+  --note-text-color: black;
+  --readmore-border-color: #c9cdd0;
+}
+
+html.dark {
+  --link-color: #77a8fd;
+  --link-color-hovered: #5292ff;
+  --backdrop-color: #323232;
+  --backdrop-color-hovered: #444;
+  --note-background-color: #00396b;
+  --note-text-color: white;
+  --readmore-border-color: #44474f;
+}
+
 /* Make content wider (default was 700px) */
 .wrapper {
   max-width: calc(900px - (30px * 2));
 }
 
 /* Make tags/categories more beautiful than just a list */
-a.tag {
-  background-color: #edecec;
-  color: #333;
+html a.tag {
+  background-color: var(--backdrop-color);
+  color: var(--link-color);
   display: inline-flex;
   padding: 0.4rem 0.8rem;
   border-radius: 16px;
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color 0.2s;
 
   &:hover,
   &:active {
-    background-color: #d5d5d5;
-  }
-}
-/* Tag dark mode overrides */
-html.dark a.tag {
-  background-color: #323232;
-  color: #eaeaea;
-
-  &:hover,
-  &:active {
-    background-color: #444;
+    background-color: var(--backdrop-color-hovered);
+    color: var(--link-color-hovered);
   }
 }
 
@@ -35,17 +47,18 @@ html.dark a.tag {
 iframe {
   border: none;
   border-radius: .3rem;
-  background-color: #222431;
+  background-color: var(--code-block-background-color);
 }
 
 /* Simple readmore shortcut */
-a.readmore {
+html a.readmore {
+  color: var(--link-color);
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 1rem;
-  background: none;
+  padding: 0.25em 1em;
+  margin: 1em 0;
   text-decoration: none;
-  border: 0.15rem solid #333;
+  border: 0.2rem solid var(--readmore-border-color);
   border-radius: 10rem;
   transition: color 0.2s ease, border-color 0.2s ease;
 
@@ -53,32 +66,20 @@ a.readmore {
     content: "→";
     padding-right: 0.5rem;
   }
-}
-/* Simple readmore dark mode overrides */
-html.dark a.readmore {
-  border-color: #eaeaea;
-  color: #eaeaea;
-}
-/* Simple readmore hover overrides */
-html a.readmore {
+
   &:hover,
   &:active {
-    color: #5292ff;
-    border-color: #5292ff;
+    color: var(--link-color-hovered);
+    border-color: var(--link-color-hovered);
   }
 }
 
 /* Note shortcode box */
 html div.note-box {
-  border-left: 4px solid #007BFF;
-  background: #d2e6f7;
+  border-left: 7px solid var(--note-accent-color);
+  background: var(--note-background-color);
   padding: 1em;
   margin: 1em 0;
-  border-radius: 4px;
-  color: black;
-}
-html.dark div.note-box {
-  border-left: 4px solid #007BFF;
-  background: #00396b;
-  color: white;
+  border-radius: 7px;
+  color: var(--note-text-color);
 }

@@ -47,6 +47,10 @@ References: {{< ref "posts/demo.md" >}}
 >     > It's also possible to get the url of a post using `{{</* ref "posts/demo.md" */>}}` or `{{</* relref "posts/demo.md" */>}}` (this creates `{{< ref "posts/demo.md" >}}` or `{{< relref "posts/demo.md" >}}`)
 > - combine both (e.g. [`../demo-custom-slug#text`](../demo-custom-slug#text))
 
+### Read More
+
+{{< readmore url="posts/demo.md" text="Read more on the demo page" >}}
+
 ## Lists
 
 ### Unordered Lists
@@ -172,10 +176,6 @@ Continues numeration across page:
 {{< note >}}
 This is a custom note!
 {{< /note >}}
-
-## Read More
-
-{{< readmore url="posts/demo.md" text="Read more on the demo page" >}}
 
 ## Terminal Recordings (Asciinema)
 
