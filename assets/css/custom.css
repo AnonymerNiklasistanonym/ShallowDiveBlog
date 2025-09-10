@@ -14,6 +14,8 @@
   --note-warning-background-color: #ffb574;
   --note-text-color: black;
   --readmore-border-color: #c9cdd0;
+  --display-dark: none;
+  --display-light: block;
 }
 
 html.dark {
@@ -27,6 +29,8 @@ html.dark {
   --note-warning-background-color: #a15e00;
   --note-text-color: white;
   --readmore-border-color: #44474f;
+  --display-dark: block;
+  --display-light: none;
 }
 
 /* Make content wider (default was 700px) */
@@ -92,40 +96,51 @@ html a.readmore {
   margin: 1em 0;
   border-radius: 7px;
   color: var(--note-text-color);
-}
-/* Icon */
-.note-icon {
-  font-size: 1.3em;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 0.1em;
-}
-.note-icon img {
-  width: 1.5em;
-  height: 1.5em;
-}
-/* Light mode: hide the dark icon */
-html.light .note-icon img.dark {
-  display: none;
-}
-/* Dark mode: hide the light icon */
-html.dark .note-icon img.light {
-  display: none;
-}
-/* Types */
-.note-box.bad {
-  border-left: 7px solid var(--note-bad-color);
-  background: var(--note-bad-background-color);
-}
-.note-box.check {
-  border-left: 7px solid var(--note-check-color);
-  background: var(--note-check-background-color);
-}
-.note-box.info {
-  border-left: 7px solid var(--note-info-color);
-  background: var(--note-info-background-color);
-}
-.note-box.warning {
-  border-left: 7px solid var(--note-warning-color);
-  background: var(--note-warning-background-color);
+
+  /* Content */
+  .note-content {
+    flex: 1;
+    width: calc(100% - 5em);
+
+    div.highlight pre {
+      margin: 0;
+    }
+  }
+  /* Icon */
+  .note-icon {
+    font-size: 1.3em;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.1em;
+
+    img {
+      width: 1.5em;
+      height: 1.5em;
+
+      &.dark {
+        display: var(--display-dark);
+      }
+      &.light {
+        display: var(--display-light);
+      }
+    }
+  }
+
+  /* Types */
+  &.bad {
+    border-left: 7px solid var(--note-bad-color);
+    background: var(--note-bad-background-color);
+  }
+  &.check {
+    border-left: 7px solid var(--note-check-color);
+    background: var(--note-check-background-color);
+  }
+  &.info {
+    border-left: 7px solid var(--note-info-color);
+    background: var(--note-info-background-color);
+  }
+  &.warning {
+    border-left: 7px solid var(--note-warning-color);
+    background: var(--note-warning-background-color);
+  }
 }
