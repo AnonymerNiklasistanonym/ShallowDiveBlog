@@ -38,6 +38,12 @@ html.dark {
   max-width: calc(900px - (30px * 2));
 }
 
+/* Fix codeblocks being too big in blockquotes on smaller screens */
+blockquote div.highlight pre {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* Make tags/categories more beautiful than just a list */
 html a.tag {
   background-color: var(--backdrop-color);
@@ -103,7 +109,8 @@ html a.readmore {
     width: calc(100% - 5em);
 
     div.highlight pre {
-      margin: 0;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   /* Icon */
