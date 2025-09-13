@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ "css/katex.min.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "css/katex/katex.min.css" | relURL }}" />
 
 <!-- The loading of KaTeX is deferred to speed up page rendering -->
 {{- $katex_js := resources.Get "js/katex/katex.min.js" | minify | fingerprint -}}
