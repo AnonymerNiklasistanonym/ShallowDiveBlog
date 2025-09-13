@@ -46,6 +46,11 @@ This repository contains Markdown articles that are automatically rendered into 
    hugo --cleanDestinationDir
    # Minified output
    hugo --minify --cleanDestinationDir
+   # Use a custom base URL for pages like GitHub pages ("/" for no base URL)
+   hugo --minify --cleanDestinationDir --baseURL "/ShallowDive/"
+   # Test output local (for testing purposes, otherwise follow step 2)
+   hugo --minify --cleanDestinationDir --baseURL "/"
+   python3 -m http.server 8080 --directory public
    ```
 
 4. Create search index in the `public/pagefind` directory by scanning the `public` directory:

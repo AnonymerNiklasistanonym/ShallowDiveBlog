@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: '22'
       - name: Build site
-        run: hugo --minify --cleanDestinationDir
+        run: hugo --minify --cleanDestinationDir --baseURL "/${GITHUB_REPOSITORY##*/}"
       - name: Run Pagefind indexer
         run: |
           mv public/tags/ tags/

@@ -1,5 +1,6 @@
 # General information
-baseURL = "https://AnonymerNiklasistanonym.github.io/ShallowDiveBlog/"
+# > baseURL for subdomain ("/ShallowDiveBlog/" is the equivalent since the domain is ignored or "/" for no subdomain)
+baseURL = "https://user.github.io/ShallowDiveBlog/"
 title = "Shallow Dive Blog"
 defaultContentLanguage = "en-us"
 
