@@ -1,0 +1,16 @@
+{{/*
+    Create interactive "Search Bar" to search all articles using pagefind
+*/}}
+{{/*
+    Example in a content file:
+    {{< searchjs >}}
+*/}}
+
+<link rel="stylesheet" href="{{ "pagefind/pagefind-ui.css" | relURL }}">
+<script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+<script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+
+{{- $search_bar_js := resources.Get "js/search_bar.js" | minify | fingerprint -}}
+<script src="{{ $search_bar_js.RelPermalink }}" defer></script>
+
+<div id="search"></div>
