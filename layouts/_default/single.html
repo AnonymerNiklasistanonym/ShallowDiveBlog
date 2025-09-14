@@ -37,6 +37,13 @@
                         {{ end }}
                     {{ end }}
                 </div>
+                <!-- PATCH: Add estimated reading time -->
+                {{ with .Page }}
+                    <div class="post-meta">
+                        <strong>{{ i18n "estimatedReadingTime" }}:</strong>
+                        {{ .ReadingTime }} {{ i18n "minute" .ReadingTime }}
+                    </div>
+                {{ end }}
                 <!-- PATCH: Add clickable list of categories -->
                 {{ with .Params.categories }}
                     <div class="post-meta">

@@ -1,12 +1,17 @@
 by:
   other: "By"
-date:
-  other: "Date"
-lastmod:
-  other: "Last modified"
 category:
   one: "Category"
   other: "Categories"
+date:
+  other: "Date"
+estimatedReadingTime:
+  other: "Estimated reading time"
+lastmod:
+  other: "Last modified"
+minute:
+  one: "minute"
+  other: "minutes"
 tag:
   one: "Tag"
   other: "Tags"

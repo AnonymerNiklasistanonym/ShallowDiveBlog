@@ -1,6 +1,6 @@
 --- single.html.original	2024-09-26 05:47:11.000000000 +0200
-+++ single.html	2025-08-30 12:25:36.205301619 +0200
-@@ -4,12 +4,57 @@
++++ single.html	2025-09-14 08:55:36.286134413 +0200
+@@ -4,12 +4,64 @@
          <article>
              <header class="header">
                  <h1 class="header-title">{{ .Title }}</h1>
@@ -38,6 +38,13 @@
 +                        {{ end }}
 +                    {{ end }}
                  </div>
++                <!-- PATCH: Add estimated reading time -->
++                {{ with .Page }}
++                    <div class="post-meta">
++                        <strong>{{ i18n "estimatedReadingTime" }}:</strong>
++                        {{ .ReadingTime }} {{ i18n "minute" .ReadingTime }}
++                    </div>
++                {{ end }}
 +                <!-- PATCH: Add clickable list of categories -->
 +                {{ with .Params.categories }}
 +                    <div class="post-meta">

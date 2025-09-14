@@ -1,12 +1,17 @@
 by:
   other: "Von"
-date:
-  other: "Datum"
-lastmod:
-  other: "Zuletzt geändert"
 category:
   one: "Kategorie"
   other: "Kategorien"
+date:
+  other: "Datum"
+estimatedReadingTime:
+  other: "Ungefähre Lesezeit"
+lastmod:
+  other: "Zuletzt geändert"
+minute:
+  one: "Minute"
+  other: "Minuten"
 tag:
   one: "Tag"
   other: "Tags"
