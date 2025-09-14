@@ -1,4 +1,4 @@
-personal_ws-1.1 de 8 
+personal_ws-1.1 de 19 
 Asciinema
 KaTeX
 Konsolenaufnahme
@@ -7,3 +7,14 @@ Renderer
 Suchindexierung
 Webseitengenerator
 Webwiedergabe
+categories
+date
+draft
+false
+lastmod
+math
+searchjs
+summary
+tags
+toc
+true

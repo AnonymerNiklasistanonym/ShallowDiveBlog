@@ -54,7 +54,7 @@ Meaning the line `char str1[] = "Hello"` actually stores 6 `char`s where the las
       - Windows: `SIZE_T`
   - Since memory access instructions (e.g. Assembly `mov`/`load`/`store`) of the CPU ISA (Instruction Set Architecture) are hard-coded to use a register as memory address
     - a $32$ bit CPU can address a theoretic maximum of $2^{32}$ byte $\approx 4$ gigabytes
-    - a $64$ bit CPU can address a theoretic maximum of $2^{64}$ byte $\approx 18$ exabytes ($= 18000$ terrabytes)
+    - a $64$ bit CPU can address a theoretic maximum of $2^{64}$ byte $\approx 18$ exabytes ($= 18000$ terabytes)
 
 ### Hardware Implementation C Strings
 
@@ -103,7 +103,7 @@ There are 3 memory areas:
      - Some special registers like the instruction pointer register: tracks the address of the next instruction to execute
      - SIMD/floating-point registers: AVX-$512$ allows up to $32 \times 512$-bit vector registers
      - Some legacy registers that remain largely unused
-     - **BUT** in reality on the microarchitecture level there are hundreds of more registers to enable out-of-order execution, pipelining, ...
+     - **BUT** in reality on the micro-architecture level there are hundreds of more registers to enable out-of-order execution, pipelining, ...
 2. **Stack**: *(in RAM, managed by CPU/OS)*
 
    ```c

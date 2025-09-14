@@ -26,7 +26,7 @@ This is a sample blog post to test the *Hugo Blog Awesome* theme.
 
 ## Text
 
-**Bold**, *Italic*, ***Both***, ~Striked~
+**Bold**, *Italic*, ***Both***, ~Crossed~
 
 [Inline links](#text)
 
@@ -44,7 +44,7 @@ References: {{< ref "posts/demo.md" >}}
 >
 >   - using the filenames without the `.md` ending if no custom slug was specified (e.g. [`../about`](../about))
 >
->     > It's also possible to get the url of a post using `{{</* ref "posts/demo.md" */>}}` or `{{</* relref "posts/demo.md" */>}}` (this creates `{{< ref "posts/demo.md" >}}` or `{{< relref "posts/demo.md" >}}`)
+>     > It's also possible to get the URL of a post using `{{</* ref "posts/demo.md" */>}}` or `{{</* relref "posts/demo.md" */>}}` (this creates `{{< ref "posts/demo.md" >}}` or `{{< relref "posts/demo.md" >}}`)
 > - combine both (e.g. [`../demo-custom-slug#text`](../demo-custom-slug#text))
 
 ### Read More
@@ -112,7 +112,7 @@ echo "Code block"
 >
 > - Inline: `$...$`
 >
-> - Bigger (displaystyle): `$$...$$`
+> - Bigger (display-style): `$$...$$`
 >
 > - Multiline and bigger:
 >
@@ -126,7 +126,7 @@ Inline: $\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$
 
 Big: $$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$$
 
-Big multiline block:
+Big multi-line block:
 
 {{< mathblock >}}
 \begin{aligned}
@@ -135,7 +135,7 @@ Big multiline block:
 \end{aligned}
 {{< /mathblock >}}
 
-Big multiline block (numerated):
+Big multi-line block (numerated):
 
 {{< mathblock >}}
 \begin{align}
@@ -154,7 +154,7 @@ Continues numeration across page:
 
 ## Images
 
-> Images placed into `static/images/article or category/.../image.svg` can be refrenced:
+> Images placed into `static/images/article or category/.../image.svg` can be referenced:
 >
 > - As-is: `../../images/examples/stars.svg`
 > - As figure (subtitle, custom width/height: `{{</* figure src="../../images/examples/stars.svg" alt="Stars Example Image" title="Star Example Image Title" width=50%" */>}}`
@@ -211,7 +211,7 @@ This is a custom note!
 
 ### Page information
 
-> All page header values can be gotten using the following shortcode:
+> Get page information values using:
 >
 > ```md
 > {{</* param "author" */>}}
