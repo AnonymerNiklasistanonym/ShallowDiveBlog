@@ -34,6 +34,11 @@ This repository contains Markdown articles that are automatically rendered into 
    sudo pacman -S hugo
    ```
 
+   ```pwsh
+   winget install GoLang.Go
+   winget install Hugo.Hugo.Extended
+   ```
+
 2. Run `hugo` for a live preview in the browser:
 
    ```sh
