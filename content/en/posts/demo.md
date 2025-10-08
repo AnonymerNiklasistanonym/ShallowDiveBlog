@@ -111,11 +111,11 @@ echo "Code block"
 > ```
 >
 > - Inline: `$...$`
-> 
+>
 > - Inline that also correctly escapes certain parts:
 >
 >   ```md
->   {{</* mathinline */>}} ... {{</* /mathinline */>}}
+>   {{</* mathinline */>}}$...${{</* /mathinline */>}}
 >   ```
 >
 > - Bigger (display-style): `$$...$$`
@@ -124,7 +124,9 @@ echo "Code block"
 >
 >   ```md
 >   {{</* mathblock */>}}
+>   $$
 >   ...
+>   $$
 >   {{</* /mathblock */>}}
 >   ```
 
@@ -135,27 +137,33 @@ Big: $$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$$
 Big multi-line block:
 
 {{< mathblock >}}
+$$
 \begin{aligned}
 \sum_{k=1}^{n} k &= 1 + 2 + 3 + \cdots + n \\
                  &= \frac{n(n+1)}{2}
 \end{aligned}
+$$
 {{< /mathblock >}}
 
 Big multi-line block (numerated):
 
 {{< mathblock >}}
+$$
 \begin{align}
 f(x) &= x^2 + 2x + 1 \\
      &= (x+1)^{\textcolor{red}2}
 \end{align}
+$$
 {{< /mathblock >}}
 
 Continues numeration across page:
 
 {{< mathblock >}}
+$$
 \begin{align}
 1 + 1 = 2
 \end{align}
+$$
 {{< /mathblock >}}
 
 Sometimes inline code is not correct formatted (like escape symbols `\{`) so you can use the shortcode `mathline`:
@@ -163,8 +171,8 @@ Sometimes inline code is not correct formatted (like escape symbols `\{`) so you
 The set $V = \{x_1, x_2, x_3\}$ is the set of vertices.
 The set $E = \big\{\{x_1, x_2\}, \{x_1, x_3\}\big\}$ is the set of edges.
 
-The set {{< mathinline >}}V = \{x_1, x_2, x_3\}{{< /mathinline >}} is the set of vertices.
-The set {{< mathinline >}}E = \big\{\{x_1, x_2\}, \{x_1, x_3\}\big\}{{< /mathinline >}} is the set of edges.
+The set {{< mathinline >}}$V = \{x_1, x_2, x_3\}${{< /mathinline >}} is the set of vertices.
+The set {{< mathinline >}}$E = \big\{\{x_1, x_2\}, \{x_1, x_3\}\big\}${{< /mathinline >}} is the set of edges.
 
 ## Images
 

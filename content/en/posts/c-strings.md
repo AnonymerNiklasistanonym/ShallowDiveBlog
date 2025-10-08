@@ -64,25 +64,31 @@ Meaning the line `char str1[] = "Hello"` actually stores 6 `char`s where the las
   - fixed width (*all characters have the same bit length*)
 
     {{< mathblock >}}
+    $$
     \overbrace{00001010}^{\text{character } 1}\overbrace{00000010}^{\text{character }2}\dots\overbrace{00000000}^{\text{last character }}
+    $$
     {{< /mathblock >}}
 
   - unsigned binary integers (*each character represents a positive number*)
 
     {{< mathblock >}}
+    $$
     \begin{aligned}
     00001010_2 &= 2^0*0 + 2^1 * 1 + 2^2 * 0 + 2^3 * 1 + 2^4 * 0 + \dots \\
                &= 2_{10} + 8_{10} = {10}_{10}
     \end{aligned}
+    $$
     {{< /mathblock >}}
 
   - terminated at the end by an additional zero code unit (**all code units before are non-zero**)
 
     {{< mathblock >}}
+    $$
     \begin{aligned}
     00000000_2 &= 2^0*0 + 2^1 * 0 + \dots \\
                &= 0_{10}
     \end{aligned}
+    $$
     {{< /mathblock >}}
 
 - when speaking of *strings* normally code units of type `char`/`wchar_t` are meant

@@ -4,12 +4,12 @@
 */}}
 {{/*
     Example in a content file:
-    {{< mathinline >}}V = \{x_1, x_2, x_3\}{{< /mathinline >}}
-    {{< mathinline >}}E = \big\{\{x_1, x_2\}, \{x_1, x_3\}\big\}{{< /mathinline >}}
+    {{< mathinline >}}$V = \{x_1, x_2, x_3\}${{< /mathinline >}}
+    {{< mathinline >}}$E = \big\{\{x_1, x_2\}, \{x_1, x_3\}\big\}${{< /mathinline >}}
 */}}
 {{/*
     In case an escaped symbol ever breaks KaTeX rendering use '{{ .Inner | safeHTML }}'
 */}}
 <span class="math-inline">
-  ${{ .Inner }}$
+  {{ .Inner }}
 </span>
