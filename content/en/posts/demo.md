@@ -111,10 +111,16 @@ echo "Code block"
 > ```
 >
 > - Inline: `$...$`
+> 
+> - Inline that also correctly escapes certain parts:
+>
+>   ```md
+>   {{</* mathinline */>}} ... {{</* /mathinline */>}}
+>   ```
 >
 > - Bigger (display-style): `$$...$$`
 >
-> - Multiline and bigger:
+> - Multiline and bigger (also correctly escapes certain parts):
 >
 >   ```md
 >   {{</* mathblock */>}}
@@ -151,6 +157,14 @@ Continues numeration across page:
 1 + 1 = 2
 \end{align}
 {{< /mathblock >}}
+
+Sometimes inline code is not correct formatted (like escape symbols `\{`) so you can use the shortcode `mathline`:
+
+The set $V = \{x_1, x_2, x_3\}$ is the set of vertices.
+The set $E = \big\{\{x_1, x_2\}, \{x_1, x_3\}\big\}$ is the set of edges.
+
+The set {{< mathinline >}}V = \{x_1, x_2, x_3\}{{< /mathinline >}} is the set of vertices.
+The set {{< mathinline >}}E = \big\{\{x_1, x_2\}, \{x_1, x_3\}\big\}{{< /mathinline >}} is the set of edges.
 
 ## Images
 
