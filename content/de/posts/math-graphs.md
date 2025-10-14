@@ -57,7 +57,7 @@ Ein solcher Graph wird dann Hypergraph genannt.
 
   {{< figure src="../../../images/math_graphs/schlussfolgerung_1.svg" alt="Multigraph Beispiel" width=80%" >}}
 
-- Falls die Anzahl Ausgangs und Eingangsgrade gleich ist und der Kantenzahl entspricht ist der Graph gerichtet: $\sum^n_{i=1}d^+(x_i)=\sum^n_{i=1}d^-(x_i)=k$
+- In jedem gerichteten Graphen ist die Summe aller Ausgangsgrade gleich der Summe aller Eingangsgrade, und beide sind gleich der Anzahl der gerichteten Kanten: $\sum^n_{i=1}d^+(x_i)=\sum^n_{i=1}d^-(x_i)=k$
 
   {{< figure src="../../../images/math_graphs/schlussfolgerung_2.svg" alt="Multigraph Beispiel" width=80%" >}}
   
@@ -112,7 +112,35 @@ TODO Beispiel
 
 Ein Knoten $x \in V$ wird als **trennend** bezeichnet, wenn ein Graph nach dem Herausnehmen mehr Zusammenhangskomponenten aufweist:
 
-TODO Grafik
+{{< figure src="../../../images/math_graphs/trennend.svg" alt="Weg Beispiel" width=80%" >}}
+
+## Darstellungen von Graphen
+
+### Adjazensmatrizen
+
+Kanten kann man mithilfe von einer $n \times n$ Adjazensmatrix über $n$ Knoten dargestellt werden:
+
+{{< mathblock >}}
+$$
+\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0
+\end{bmatrix}
+\Rightarrow
+\begin{array}{c|ccc}
+      & x_1 & x_2 & x_3 \\ \hline
+x_1 & 0 & 1 & 0 \\
+x_2 & 0 & 0 & 1 \\
+x_3 & 1 & 0 & 0
+\end{array}
+$$
+{{< /mathblock >}}
+
+Diese Matrix bedeutet wir haben die Knoten $x_1, x_2, x_3$ und haben eine Kante von $x_1$ zu $x_2$, eine von $x_2$ zu $x_3$ und von $x_3$ zu $x_1$:
+
+TODO Bild
+
 
 ## Help
 
