@@ -40,25 +40,95 @@ Bei dieser Definition gibt es den Nachteil, dass es nicht möglich ist mehrere K
 Dies braucht man z.B: für verschiedene Linien über denselben Gleisen in einem Eisenbahnnetz und könnte durch die Erweiterung durch eine zusätzliche Information wie Farbe/Linienname ergänzen (Kante: $(x_i, x_j, \text{Farbe})$).
 Ein solcher Graph wird dann Multigraph genannt.
 
-{{< figure src="../../../images/math_graphs/multigraph_example.svg" alt="Hypergraph Beispiell" width=60%" >}}
+{{< figure src="../../../images/math_graphs/multigraph_example.svg" alt="Multigraph Beispiel" width=80%" >}}
+
+Jeder Multigraph kann in einen Graph transformiert werden durch das Einführen von neuen Knoten.
 
 Es gibt auch Graphen bei welcher eine Kante mehr als 2 Konten verbindet wie z.B. für Studenten (Knoten) welche Module (Kanten) belegen.
 Ein solcher Graph wird dann Hypergraph genannt.
 
-{{< figure src="../../../images/math_graphs/hypergraph_example.svg" alt="Hypergraph Beispiell" width=60%" >}}
+{{< figure src="../../../images/math_graphs/hypergraph_example.svg" alt="Hypergraph Beispiel" width=60%" >}}
+
+### Schlussfolgerungen
+
+- Falls die Anzahl aller Grade der doppelten Kantenzahl entspricht, ist der Graph schlingenfrei und ungerichtet: $\sum^n_{i=1}d(x_i)=2k$
+
+  - Im Falle, dass der Graph Schlingen enthält kann man diese Abziehen: ${\color{grey}\sum^n_{i=1}d(x_i)}={\color{grey}2k}-s$
+
+  {{< figure src="../../../images/math_graphs/schlussfolgerung_1.svg" alt="Multigraph Beispiel" width=80%" >}}
+
+- Falls die Anzahl Ausgangs und Eingangsgrade gleich ist und der Kantenzahl entspricht ist der Graph gerichtet: $\sum^n_{i=1}d^+(x_i)=\sum^n_{i=1}d^-(x_i)=k$
+
+  {{< figure src="../../../images/math_graphs/schlussfolgerung_2.svg" alt="Multigraph Beispiel" width=80%" >}}
+  
+{{< note >}}
+Frage nach inwieweit dies nützlich ist, da es ja auch für ungerichtete Graphen gilt, wenn man die Kante doppelt zählt?
+{{< /note >}}
+
+## Wege
+
+Ein Weg in einem Graph $G$ ist eine Folge von Knoten $(x_0,  \dots, x_k)$, falls die Kantenmenge $E$ die Kanten zwischen den Konten enthält (e.g. für den Weg $(a, b, c)$ muss die Kantenmenge $E$ $(a,b)$ und $(b,c)$ enthalten in einem gerichteten Graph $G=(V,E)$).
+
+Die Länge des Weges ergibt sich aus der Anzahl der Kanten aus welchen dieser besteht.
+
+Falls $x_0 = x_k$ heißt der Weg **geschlossen**, sonst ist er **offen**.
+
+Von einem **Kreis** spricht man wenn es ein geschlossener Weg ist in dem keine Kante mehrfach vorkommt.
+
+{{< figure src="../../../images/math_graphs/weg.svg" alt="Weg Beispiel" width=80%" >}}
+
+Wenn ein Graph keine Kreise enthält nennt man diesen **kreisfrei**.
+
+### Abstand
+
+Der **Abstand** $d(x_1, x_2)$ zwischen 2 Knoten ($x_1$ und $x_2$) ist die Länge des kleinstmöglichen Weges zwischen diesen:
+
+{{< figure src="../../../images/math_graphs/abstand.svg" alt="Hypergraph Beispiel" width=60%" >}}
+
+Alle Knoten welche mit dem Abstand $d = 1$ von einem Konten entfernt sind nennt man **Nachbarschaft**:
+
+{{< figure src="../../../images/math_graphs/nachbarschaft.svg" alt="Hypergraph Beispiel" width=60%" >}}
+
+### Zusammenhängend
+
+Bei ungerichteten Graphen spricht man von **zusammenhängen** wenn für jeden Knoten ein Weg existiert zu jedem anderen Knoten.
+
+Bei gerichteten Graphen spricht man wenn dasselbe gilt von **stark zusammenhängend**, wenn durch das weglassen der Richtung ein zusammenhängender Graph entsteht spricht man von **schwach zusammenhängend**:
+
+{{< figure src="../../../images/math_graphs/zusammenhängend.svg" alt="Weg Beispiel" width=80%" >}}
+
+Falls einzelne Teile des Graphs zusammenhängen nennt man diese Zusammenhangskomponenten.
+Diese kann man mithilfe von Äquivalenzklassen ausdrücken:
+
+{{< mathblock >}}
+$$
+\begin{aligned}
+R = \{(x, y) \mid x, y \in V, \exists \text{ Weg von }x\text{  nach }y\}
+\end{aligned}
+$$
+{{< /mathblock >}}
+
+TODO Beispiel
+
+Ein Knoten $x \in V$ wird als **trennend** bezeichnet, wenn ein Graph nach dem Herausnehmen mehr Zusammenhangskomponenten aufweist:
+
+TODO Grafik
 
 ## Help
 
-{{< mathblock >}}$$
+{{< mathblock >}}
+$$
 \begin{aligned}
 f(x) &= x^2 + 2x + 1 \\
      &= (x+1)^2
 \end{aligned}
-$${{< /mathblock >}}
-
-{{< mathblock >}}$$
+$$
+{{< /mathblock >}}
+{{< mathblock >}}
+$$
 \begin{align}
 f(x) &= x^2 + 2x + 1 \\
      &= (x+1)^2
 \end{align}
-$${{< /mathblock >}}
+$$
+{{< /mathblock >}}
