@@ -61,6 +61,7 @@ Ein solcher Graph wird dann Hypergraph genannt.
 
   {{< figure src="../../../images/math_graphs/schlussfolgerung_2.svg" alt="Multigraph Beispiel" width=80%" >}}
   
+
 {{< note >}}
 Frage nach inwieweit dies nützlich ist, da es ja auch für ungerichtete Graphen gilt, wenn man die Kante doppelt zählt?
 {{< /note >}}
@@ -140,6 +141,10 @@ $$
 Diese Matrix bedeutet wir haben die Knoten $x_1, x_2, x_3$ und haben eine Kante von $x_1$ zu $x_2$, eine von $x_2$ zu $x_3$ und von $x_3$ zu $x_1$:
 
 TODO Bild
+
+{{< details summary="Beispiel" open=true >}}
+Here’s the content you can expand/collapse.
+{{< /details >}}
 
 
 ## Help

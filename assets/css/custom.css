@@ -151,3 +151,43 @@ html a.readmore {
     background: var(--note-warning-background-color);
   }
 }
+
+/* Always show details when printing the page */
+print { details { open: true; } }
+
+/* === Collapsible details switch === */
+details {
+	width: 90%;
+	margin: 1em 0;         /* top/bottom = 1em, left/right = 0 */
+	padding: 0.5em 1em;
+	border: 0.2rem solid var(--readmore-border-color);
+	border-radius: 6px;
+	background: var(--note-info-background-color);
+	transition: background 0.2s ease;
+
+	summary {
+		cursor: pointer;
+		font-weight: 600;
+		list-style: none;
+		padding: 0.4em 0.6em;
+		position: relative;
+		user-select: none;
+
+		/* Remove default arrow */
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		/* Custom arrow */
+		&::before {
+			content: "▸";
+			display: inline-block;
+			margin-right: 0.4em;
+			transition: transform 0.2s ease;
+		}
+	}
+
+	&[open] summary::before {
+		transform: rotate(90deg);
+	}
+}
